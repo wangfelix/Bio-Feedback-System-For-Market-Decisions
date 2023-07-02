@@ -7,13 +7,14 @@ import { Button } from "Components/Button/button";
 import { Row } from "Components/row";
 import { Container } from "Components/container";
 import { Logo } from "Illustrations/Logo";
+import { useIsLoggedIn } from "Utils/hooks";
 
 export const NavBar = () => {
     // -- STATE --
 
     // const page = Pathss[Math.floor(Math.random() * Pathss.length)];
 
-    const isLoggedIn = false;
+    const isLoggedIn = useIsLoggedIn();
 
     const isAdmin = true;
 
@@ -22,10 +23,11 @@ export const NavBar = () => {
     const navBarItemsLeft: NavBarItemProps[] = useMemo(
         () => [
             { title: NavBarTabs.DASHBOARD, to: Paths.LANDING_PAGE, selected: true },
-            { title: NavBarTabs.HISTORY, to: Paths.HISTORY_PAGE, selected: false },
+
             ...(isLoggedIn
                 ? [
                       ...(isAdmin ? [{ title: NavBarTabs.ADMIN, to: Paths.ADMIN_PAGE, selected: false }] : []),
+                      { title: NavBarTabs.HISTORY, to: Paths.HISTORY_PAGE, selected: false },
                       {
                           title: NavBarTabs.LIVE_FEED,
                           to: Paths.LIVE_FEED_PAGE,
