@@ -7,12 +7,12 @@ import { Button } from "Components/Button/button";
 import { Row } from "Components/row";
 import { Container } from "Components/container";
 import { Logo } from "Illustrations/Logo";
-import { useIsLoggedIn } from "Utils/hooks";
+import { useIsLoggedIn, usePage } from "Utils/hooks";
 
 export const NavBar = () => {
     // -- STATE --
 
-    // const page = Pathss[Math.floor(Math.random() * Pathss.length)];
+    const page = usePage();
 
     const isLoggedIn = useIsLoggedIn();
 
@@ -22,26 +22,28 @@ export const NavBar = () => {
 
     const navBarItemsLeft: NavBarItemProps[] = useMemo(
         () => [
-            { title: NavBarTabs.DASHBOARD, to: Paths.LANDING_PAGE, selected: true },
+            { title: NavBarTabs.DASHBOARD, to: Paths.LANDING_PAGE, selected: page === Paths.LANDING_PAGE },
 
             ...(isLoggedIn
                 ? [
-                      ...(isAdmin ? [{ title: NavBarTabs.ADMIN, to: Paths.ADMIN_PAGE, selected: false }] : []),
-                      { title: NavBarTabs.HISTORY, to: Paths.HISTORY_PAGE, selected: false },
+                      ...(isAdmin
+                          ? [{ title: NavBarTabs.ADMIN, to: Paths.ADMIN_PAGE, selected: page === Paths.ADMIN_PAGE }]
+                          : []),
+                      { title: NavBarTabs.HISTORY, to: Paths.HISTORY_PAGE, selected: page === Paths.HISTORY_PAGE },
                       {
                           title: NavBarTabs.LIVE_FEED,
                           to: Paths.LIVE_FEED_PAGE,
-                          selected: false,
+                          selected: page === Paths.LIVE_FEED_PAGE,
                       },
                       {
                           title: NavBarTabs.SENSORS_AND_DEVICES,
                           to: Paths.SENSORS_AND_DEVICES_PAGE,
-                          selected: false,
+                          selected: page === Paths.SENSORS_AND_DEVICES_PAGE,
                       },
                   ]
                 : []),
         ],
-        [isLoggedIn, isAdmin]
+        [isLoggedIn, isAdmin, page]
     );
 
     // -- CALLBACKS --
