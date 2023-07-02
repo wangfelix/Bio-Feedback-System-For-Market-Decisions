@@ -1,7 +1,6 @@
 import React from "react";
 
 import HeroImage from "Illustrations/Präsidiumsgebäude_Bildweltjpg.jpg";
-import { NavBar } from "Components/Navbar/navbar";
 import { Container } from "Components/container";
 import { Colors, Z_INDEX } from "Utils/globalStyles";
 
@@ -15,7 +14,6 @@ export const LandingPage = () => {
 
     return (
         <Container style={globalStyles}>
-            <NavBar />
             <img src={HeroImage} alt="Hero Bild" style={{ maxWidth: "100vw" }} />
         </Container>
     );

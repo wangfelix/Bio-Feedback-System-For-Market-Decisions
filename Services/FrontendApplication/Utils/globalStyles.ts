@@ -22,6 +22,8 @@ export const MAX_PAGE_WIDTH = 2000;
 
 export const NAVBAR_HEIGHT = "65px";
 
+export const FOOTER_HEIGHT = "100px";
+
 export enum NavBarTabs {
     DASHBOARD = "Dashboard",
     HISTORY = "History",
