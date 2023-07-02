@@ -1,14 +1,22 @@
 import React from "react";
 
-import { Button } from "Components/button";
-import { Row } from "Components/row";
 import HeroImage from "Illustrations/Präsidiumsgebäude_Bildweltjpg.jpg";
+import { NavBar } from "Components/Navbar/navbar";
+import { Container } from "Components/container";
+import { Colors, Z_INDEX } from "Utils/globalStyles";
 
 export const LandingPage = () => {
+    const globalStyles = {
+        color: Colors.BLACK,
+        fontFamily: "Inter",
+        lineHeight: "1.5em",
+        zIndex: Z_INDEX.PAGE,
+    };
+
     return (
-        <Row style={{ width: "100vw", background: "blue" }}>
+        <Container style={globalStyles}>
+            <NavBar />
             <img src={HeroImage} alt="Hero Bild" style={{ maxWidth: "100vw" }} />
-            <Button text="Log In" />
-        </Row>
+        </Container>
     );
 };

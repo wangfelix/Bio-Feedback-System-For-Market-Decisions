@@ -15,3 +15,27 @@ export enum Colors {
     GREY = "#CCCCCC",
     RED = "#ba3446",
 }
+
+export const BORDER_RADIUS = "5px";
+
+export const MAX_PAGE_WIDTH = 2000;
+
+export const NAVBAR_HEIGHT = "65px";
+
+export enum NavBarTabs {
+    DASHBOARD = "Dashboard",
+    HISTORY = "History",
+    LIVE_FEED = "Live Feed",
+    SENSORS_AND_DEVICES = "Sensors and Devices",
+    ADMIN = "Admin Panel",
+}
+
+export enum Z_INDEX {
+    DEMO_PAGE_MODAL = 2200,
+    DEMO_PAGE = 2100,
+    NAVBAR = 2000,
+    MODAL = 1000,
+    BUTTON = 500,
+    PAGE = 0,
+    CARD = 10,
+}

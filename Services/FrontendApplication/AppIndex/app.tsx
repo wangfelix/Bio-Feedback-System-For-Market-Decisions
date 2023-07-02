@@ -1,13 +1,13 @@
-import React from 'react';
-import {LandingPage} from "../Pages/landingPage";
+import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+
+import { LandingPage } from "Pages/landingPage";
 
 const App = () => {
     return (
-        <>
-            <div>{'Hallo Welt. :))))'}</div>
-            <LandingPage/>
-        </>
-
+        <BrowserRouter>
+            <LandingPage />
+        </BrowserRouter>
     );
-}
+};
 export default App;

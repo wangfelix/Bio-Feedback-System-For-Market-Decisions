@@ -1,9 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const distPath = "/dist";
-const relativeIllustrationsDistPath = "/Illustrations";
-
 module.exports = {
     mode: "development",
     entry: "./AppIndex/main.tsx",
@@ -29,6 +26,7 @@ module.exports = {
             },
             { test: /\.png/, type: "asset/resource" },
             { test: /\.jpg/, type: "asset/resource" },
+            { test: /\.svg/, type: "asset/resource" },
         ],
     },
     resolve: {
