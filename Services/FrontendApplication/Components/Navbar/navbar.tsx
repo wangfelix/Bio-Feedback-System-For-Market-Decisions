@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import { useDispatch } from "react-redux";
 
 import { NAVBAR_HEIGHT, Colors, NavBarTabs, Z_INDEX, MAX_PAGE_WIDTH } from "Utils/globalStyles";
 import { Paths } from "Utils/paths";
@@ -8,8 +9,11 @@ import { Row } from "Components/row";
 import { Container } from "Components/container";
 import { Logo } from "Illustrations/Logo";
 import { useIsLoggedIn, usePage } from "Utils/hooks";
+import { setRegistrationModalOpen } from "State/Actions/actionCreators";
 
 export const NavBar = () => {
+    const dispatch = useDispatch();
+
     // -- STATE --
 
     const page = usePage();
@@ -99,7 +103,7 @@ export const NavBar = () => {
                     <Row styleProps={{ position: "absolute", right: "20px", justifySelf: "flex-end" }}>
                         <Button
                             buttonType="primary"
-                            onClickHandle={() => {}}
+                            onClickHandle={() => dispatch(setRegistrationModalOpen(true))}
                             styleProps={{
                                 borderRadius: 50,
                                 padding: "0 20px",

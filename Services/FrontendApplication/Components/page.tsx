@@ -1,5 +1,6 @@
 import React, { ReactNode, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import { NavBar } from "Components/Navbar/navbar";
 import { Footer } from "Components/footer";
@@ -7,6 +8,8 @@ import { Colors, NAVBAR_HEIGHT, Z_INDEX } from "Utils/globalStyles";
 import { Container } from "Components/container";
 import { Paths } from "Utils/paths";
 import { useIsLoggedIn, usePage, useViewportDimensions } from "Utils/hooks";
+import { RootState } from "State/Reducers";
+import { RegistrationModal } from "Components/RegistrationModal/registrationModal";
 
 type BasePageProps = {
     children: ReactNode;
@@ -26,6 +29,8 @@ export const Page = ({ children }: BasePageProps) => {
     const isLoggedIn = useIsLoggedIn();
 
     const { viewportHeight } = useViewportDimensions();
+
+    const isRegistrationModalOpen = useSelector<RootState, boolean>((state) => state.modals.isRegistrationModalOpen);
 
     // --- HELPERS ---
 
@@ -66,6 +71,8 @@ export const Page = ({ children }: BasePageProps) => {
             <Container styleProps={contentStyle}>{children}</Container>
 
             <Footer />
+
+            <RegistrationModal isOpen={isRegistrationModalOpen} />
         </Container>
     );
 };

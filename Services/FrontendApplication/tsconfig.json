@@ -16,6 +16,9 @@
       "Utils/*": [
         "./Utils/*"
       ],
+      "State/*": [
+        "./State/*"
+      ]
     },
     "outDir": "./dist/",
     "sourceMap": true,

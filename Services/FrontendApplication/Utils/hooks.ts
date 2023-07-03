@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 
 import { getPageFromPathname, getViewportDimensions } from "Utils/helpers";
@@ -39,5 +39,5 @@ export const useViewportDimensions = () => {
 };
 
 export const useIsLoggedIn = () => {
-    return true;
+    return false;
 };
