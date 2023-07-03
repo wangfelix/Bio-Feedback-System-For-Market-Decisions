@@ -16,7 +16,7 @@ type BasePageProps = {
  * This HOC takes a component (mostly "top-level page components") and handles it's positioning
  * and inserts the navigation-bar and footer.
  */
-export const BasePage = ({ children }: BasePageProps) => {
+export const Page = ({ children }: BasePageProps) => {
     // -- STATE --
 
     const page = usePage();

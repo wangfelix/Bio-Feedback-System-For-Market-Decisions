@@ -7,12 +7,12 @@ import { LiveFeedPage } from "Pages/liveFeedPage";
 import { AdminPage } from "Pages/adminPage";
 import { SensorsAndDevicesPage } from "Pages/sensorsAndDevicesPage";
 import { Paths } from "Utils/paths";
-import { BasePage } from "Components/page";
+import { Page } from "Components/page";
 
 const App = () => {
     return (
         <BrowserRouter>
-            <BasePage>
+            <Page>
                 <Routes>
                     <Route path={Paths.LANDING_PAGE} Component={LandingPage} />
 
@@ -26,7 +26,7 @@ const App = () => {
 
                     <Route Component={ErrorPage} />
                 </Routes>
-            </BasePage>
+            </Page>
         </BrowserRouter>
     );
 };
