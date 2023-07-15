@@ -42,14 +42,10 @@ export const RegistrationModal = ({ isOpen }: RegistrationModalProps) => {
         }
 
         if (!isOpen) {
+            setFormState(REGISTRATION_FORM_INITIAL_STATE);
+
             document.body.style.overflow = "unset";
             document.body.style.paddingRight = "0";
-        }
-    }, [isOpen]);
-
-    useEffect(() => {
-        if (!isOpen) {
-            setFormState(REGISTRATION_FORM_INITIAL_STATE);
         }
     }, [isOpen]);
 
