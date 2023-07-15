@@ -1,13 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { useDispatch } from "react-redux";
 
 import { Row } from "Components/row";
 import { Container } from "Components/container";
 import { Button } from "Components/Button/button";
-import { BORDER_RADIUS, Colors, Z_INDEX } from "Utils/globalStyles";
+import { BORDER_RADIUS, Colors, spacingDistance, Z_INDEX } from "Utils/globalStyles";
 import { setRegistrationModalOpen } from "State/Actions/actionCreators";
 import cross from "Illustrations/crossing.png";
+import { InputWrapper } from "Components/inputWrapper";
+import { TextInput } from "Components/textInput";
+import { HandleInputChange, RegistrationFormState } from "Components/RegistrationModal/Utils/registrationFormTypes";
+import { REGISTRATION_FORM_INITIAL_STATE } from "Components/RegistrationModal/Utils/registrationFormConstants";
 
 type RegistrationModalProps = {
     isOpen: boolean;
@@ -15,6 +19,16 @@ type RegistrationModalProps = {
 
 export const RegistrationModal = ({ isOpen }: RegistrationModalProps) => {
     const dispatch = useDispatch();
+
+    // -- STATE --
+
+    const [formState, setFormState] = useState<RegistrationFormState>(REGISTRATION_FORM_INITIAL_STATE);
+
+    // --- CALLBACKS ---
+
+    const makeHandleInputChange: (key: keyof RegistrationFormState) => HandleInputChange = (key) => (value) => {
+        setFormState((state) => ({ ...state, [key]: value }));
+    };
 
     // -- EFFECTS --
 
@@ -29,6 +43,12 @@ export const RegistrationModal = ({ isOpen }: RegistrationModalProps) => {
         if (!isOpen) {
             document.body.style.overflow = "unset";
             document.body.style.paddingRight = "0";
+        }
+    }, [isOpen]);
+
+    useEffect(() => {
+        if (!isOpen) {
+            setFormState(REGISTRATION_FORM_INITIAL_STATE);
         }
     }, [isOpen]);
 
@@ -79,6 +99,44 @@ export const RegistrationModal = ({ isOpen }: RegistrationModalProps) => {
                 </Row>
 
                 <h3 style={{ fontFamily: "Work Sans", marginBottom: "16px" }}>{"LogIn / Register"}</h3>
+
+                <Row styleProps={{ gap: spacingDistance(1) }}>
+                    <InputWrapper label="First Name">
+                        <TextInput
+                            value={formState.firstName}
+                            onValueChange={makeHandleInputChange("firstName")}
+                            placeholder="Insert your first name..."
+                        />
+                    </InputWrapper>
+
+                    <InputWrapper label="Last Name">
+                        <TextInput
+                            value={formState.lastName}
+                            onValueChange={makeHandleInputChange("lastName")}
+                            placeholder="Insert your last name..."
+                        />
+                    </InputWrapper>
+                </Row>
+
+                <InputWrapper label="Email Adresse">
+                    <TextInput
+                        value={formState.email}
+                        onValueChange={makeHandleInputChange("email")}
+                        placeholder="Insert your email-address..."
+                    />
+                </InputWrapper>
+
+                <InputWrapper label="Password">
+                    <TextInput
+                        value={formState.password}
+                        onValueChange={makeHandleInputChange("password")}
+                        placeholder="Choose a password..."
+                    />
+                </InputWrapper>
+
+                <Button buttonType="primary" styleProps={{ marginTop: spacingDistance(2) }}>
+                    Register
+                </Button>
             </Container>
         </Modal>
     );

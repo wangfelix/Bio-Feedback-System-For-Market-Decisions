@@ -24,6 +24,10 @@ export const NAVBAR_HEIGHT = "65px";
 
 export const FOOTER_HEIGHT = "100px";
 
+export const spacingDistance = (units: number) => `${units * 8}px`;
+
+export const percent = (percentage: number) => `${percentage}%`;
+
 export enum NavBarTabs {
     DASHBOARD = "Dashboard",
     HISTORY = "History",
