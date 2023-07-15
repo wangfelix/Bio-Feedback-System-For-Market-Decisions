@@ -35,7 +35,7 @@ export const NavBarItem = ({ title, selected, to: propsTo }: NavBarItemProps) =>
         height: selected ? "5px" : 0,
         width: "100%",
         borderStyle: "none",
-        background: selected ? Colors.LAVENDER : Colors.TRANSPARENT,
+        background: selected ? Colors.GREEN_ACCENT : Colors.TRANSPARENT,
         transition: "background .3s, height .3s",
     };
 
