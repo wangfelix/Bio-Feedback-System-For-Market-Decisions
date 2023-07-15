@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, SyntheticEvent, useState } from "react";
 
 import {
     primaryButtonStyle,
@@ -11,7 +11,7 @@ import { Colors } from "Utils/globalStyles";
 type ButtonProps = {
     buttonType: "primary" | "secondary" | "text" | "primaryGreyedOut";
     children?: ReactNode;
-    onClickHandle?: (...args: any[]) => any;
+    onClickHandle?: (event?: SyntheticEvent) => void;
     styleProps?: React.CSSProperties;
     id?: string;
 };

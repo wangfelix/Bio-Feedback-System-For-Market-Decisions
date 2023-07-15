@@ -12,6 +12,7 @@ import { InputWrapper } from "Components/inputWrapper";
 import { TextInput } from "Components/textInput";
 import { HandleInputChange, RegistrationFormState } from "Components/RegistrationModal/Utils/registrationFormTypes";
 import { REGISTRATION_FORM_INITIAL_STATE } from "Components/RegistrationModal/Utils/registrationFormConstants";
+import { sendPostRequest } from "Utils/api";
 
 type RegistrationModalProps = {
     isOpen: boolean;
@@ -134,7 +135,13 @@ export const RegistrationModal = ({ isOpen }: RegistrationModalProps) => {
                     />
                 </InputWrapper>
 
-                <Button buttonType="primary" styleProps={{ marginTop: spacingDistance(2) }}>
+                <Button
+                    buttonType="primary"
+                    styleProps={{ marginTop: spacingDistance(2) }}
+                    onClickHandle={() =>
+                        sendPostRequest("/register-user", { formState }).then((response) => console.log(response))
+                    }
+                >
                     Register
                 </Button>
             </Container>
