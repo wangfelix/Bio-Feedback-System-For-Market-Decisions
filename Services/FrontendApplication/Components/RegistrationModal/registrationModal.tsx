@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { Row } from "Components/row";
 import { Container } from "Components/container";
@@ -12,15 +12,16 @@ import { InputWrapper } from "Components/inputWrapper";
 import { TextInput } from "Components/textInput";
 import { HandleInputChange, RegistrationFormState } from "Components/RegistrationModal/Utils/registrationFormTypes";
 import { REGISTRATION_FORM_INITIAL_STATE } from "Components/RegistrationModal/Utils/registrationFormConstants";
-import { sendPostRequest } from "Utils/api";
 import { RootState } from "State/Reducers";
+import { logInUser, registerUser } from "Components/RegistrationModal/Store/registrationModalThunks";
+import { useAppDispatch } from "State/store";
 
 type RegistrationModalProps = {
     isOpen: boolean;
 };
 
 export const RegistrationModal = ({ isOpen }: RegistrationModalProps) => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     // -- STATE --
 
@@ -36,9 +37,11 @@ export const RegistrationModal = ({ isOpen }: RegistrationModalProps) => {
 
     const handleSendForm = () => {
         if (authMode === "login") {
-            sendPostRequest("/log-in", { ...formState }).then((response) => console.log(response));
+            dispatch(logInUser(formState) as any);
+            //sendPostRequest("/log-in", { ...formState }).then((response) => console.log(response));
         } else {
-            sendPostRequest("/register-user", { ...formState }).then((response) => console.log(response));
+            dispatch(registerUser(formState) as any);
+            //sendPostRequest("/register-user", { ...formState }).then((response) => console.log(response));
         }
     };
 
