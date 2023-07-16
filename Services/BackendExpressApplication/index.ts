@@ -55,7 +55,7 @@ app.post("/register-user", async (_req, _res) => {
 });
 
 // Login User
-app.get("/log-in", async (_req, _res) => {
+app.post("/log-in", async (_req, _res) => {
     const loginData: LogInRequestBody = _req.body as LogInRequestBody;
     const { email, password } = loginData;
 

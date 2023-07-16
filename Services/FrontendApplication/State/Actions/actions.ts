@@ -7,4 +7,9 @@ export interface RegistrationModalAction {
     payload: boolean;
 }
 
-export type ModalAction = RegistrationModalAction;
+export interface RegistrationModalStateAction {
+    type: ActionType.SET_IS_REGISTRATION_MODAL_STATE;
+    payload: "login" | "registration";
+}
+
+export type ModalAction = RegistrationModalAction | RegistrationModalStateAction;

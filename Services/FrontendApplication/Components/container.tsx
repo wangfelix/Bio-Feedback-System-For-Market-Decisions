@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, ReactNode } from "react";
+import React, { HTMLAttributes, ReactNode, forwardRef } from "react";
 
 type ContainerProps = {
     children?: ReactNode;
@@ -11,8 +11,10 @@ const defaultContainerStyle = {
     flexDirection: "column" as "column",
 };
 
-export const Container = ({ children, styleProps, classNames, ...rest }: ContainerProps) => (
-    <div className={`column ${classNames}`} style={{ ...defaultContainerStyle, ...styleProps }} {...rest}>
-        {children}
-    </div>
+export const Container = forwardRef<HTMLDivElement, ContainerProps>(
+    ({ children, styleProps, classNames, ...rest }: ContainerProps, ref) => (
+        <div className={`column ${classNames}`} style={{ ...defaultContainerStyle, ...styleProps }} ref={ref} {...rest}>
+            {children}
+        </div>
+    )
 );

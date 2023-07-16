@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { useDispatch } from "react-redux";
 
-import { NAVBAR_HEIGHT, Colors, NavBarTabs, Z_INDEX, MAX_PAGE_WIDTH } from "Utils/globalStyles";
+import { NAVBAR_HEIGHT, Colors, NavBarTabs, Z_INDEX, MAX_PAGE_WIDTH, spacingDistance } from "Utils/globalStyles";
 import { Paths } from "Utils/paths";
 import { NavBarItem, NavBarItemProps } from "Components/Navbar/Components/navBarItem";
 import { Button } from "Components/Button/button";
@@ -9,7 +9,7 @@ import { Row } from "Components/row";
 import { Container } from "Components/container";
 import { Logo } from "Illustrations/Logo";
 import { useIsLoggedIn, usePage } from "Utils/hooks";
-import { setRegistrationModalOpen } from "State/Actions/actionCreators";
+import { setRegistrationModalOpen, setRegistrationModalState } from "State/Actions/actionCreators";
 
 export const NavBar = () => {
     const dispatch = useDispatch();
@@ -53,6 +53,11 @@ export const NavBar = () => {
     // -- CALLBACKS --
 
     // const openRegistrationModal = () => dispatch(setRegistrationModalOpen(true));
+
+    const handleOpenRegistrationModal = (authMode: "login" | "registration") => {
+        dispatch(setRegistrationModalState(authMode));
+        dispatch(setRegistrationModalOpen(true));
+    };
 
     // -- STYLES --
 
@@ -100,10 +105,17 @@ export const NavBar = () => {
                 </Row>
 
                 {!isLoggedIn && (
-                    <Row styleProps={{ position: "absolute", right: "20px", justifySelf: "flex-end" }}>
+                    <Row
+                        styleProps={{
+                            position: "absolute",
+                            right: "20px",
+                            justifySelf: "flex-end",
+                            gap: spacingDistance(2),
+                        }}
+                    >
                         <Button
-                            buttonType="primary"
-                            onClickHandle={() => dispatch(setRegistrationModalOpen(true))}
+                            buttonType="text"
+                            onClickHandle={() => handleOpenRegistrationModal("login")}
                             styleProps={{
                                 borderRadius: 50,
                                 padding: "0 20px",
@@ -111,6 +123,18 @@ export const NavBar = () => {
                             }}
                         >
                             Login
+                        </Button>
+
+                        <Button
+                            buttonType="primary"
+                            onClickHandle={() => handleOpenRegistrationModal("registration")}
+                            styleProps={{
+                                borderRadius: 50,
+                                padding: "0 20px",
+                                fontSize: 14,
+                            }}
+                        >
+                            Register
                         </Button>
                     </Row>
                 )}

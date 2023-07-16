@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Row } from "Components/row";
 import { Container } from "Components/container";
@@ -13,6 +13,7 @@ import { TextInput } from "Components/textInput";
 import { HandleInputChange, RegistrationFormState } from "Components/RegistrationModal/Utils/registrationFormTypes";
 import { REGISTRATION_FORM_INITIAL_STATE } from "Components/RegistrationModal/Utils/registrationFormConstants";
 import { sendPostRequest } from "Utils/api";
+import { RootState } from "State/Reducers";
 
 type RegistrationModalProps = {
     isOpen: boolean;
@@ -25,13 +26,21 @@ export const RegistrationModal = ({ isOpen }: RegistrationModalProps) => {
 
     const [formState, setFormState] = useState<RegistrationFormState>(REGISTRATION_FORM_INITIAL_STATE);
 
+    const authMode = useSelector<RootState, "login" | "registration">((state) => state.modals.modalAuthMode);
+
     // --- CALLBACKS ---
 
     const makeHandleInputChange: (key: keyof RegistrationFormState) => HandleInputChange = (key) => (value) => {
         setFormState((state) => ({ ...state, [key]: value }));
     };
 
-    // -- EFFECTS --
+    const handleSendForm = () => {
+        if (authMode === "login") {
+            sendPostRequest("/log-in", { ...formState }).then((response) => console.log(response));
+        } else {
+            sendPostRequest("/register-user", { ...formState }).then((response) => console.log(response));
+        }
+    };
 
     useEffect(() => {
         // Prevents the body content to shift to right, due to the scrollbar being removed.
@@ -95,25 +104,29 @@ export const RegistrationModal = ({ isOpen }: RegistrationModalProps) => {
                     </Button>
                 </Row>
 
-                <h3 style={{ fontFamily: "Work Sans", marginBottom: "16px" }}>{"LogIn / Register"}</h3>
+                <h3 style={{ fontFamily: "Work Sans", marginBottom: "16px" }}>
+                    {authMode === "login" ? "LogIn" : "Register"}
+                </h3>
 
-                <Row styleProps={{ gap: spacingDistance(1) }}>
-                    <InputWrapper label="First Name">
-                        <TextInput
-                            value={formState.firstName}
-                            onValueChange={makeHandleInputChange("firstName")}
-                            placeholder="Insert your first name..."
-                        />
-                    </InputWrapper>
+                {authMode === "registration" && (
+                    <Row styleProps={{ gap: spacingDistance(1) }}>
+                        <InputWrapper label="First Name">
+                            <TextInput
+                                value={formState.firstName}
+                                onValueChange={makeHandleInputChange("firstName")}
+                                placeholder="Insert your first name..."
+                            />
+                        </InputWrapper>
 
-                    <InputWrapper label="Last Name">
-                        <TextInput
-                            value={formState.lastName}
-                            onValueChange={makeHandleInputChange("lastName")}
-                            placeholder="Insert your last name..."
-                        />
-                    </InputWrapper>
-                </Row>
+                        <InputWrapper label="Last Name">
+                            <TextInput
+                                value={formState.lastName}
+                                onValueChange={makeHandleInputChange("lastName")}
+                                placeholder="Insert your last name..."
+                            />
+                        </InputWrapper>
+                    </Row>
+                )}
 
                 <InputWrapper label="Email Adresse">
                     <TextInput
@@ -134,11 +147,9 @@ export const RegistrationModal = ({ isOpen }: RegistrationModalProps) => {
                 <Button
                     buttonType="primary"
                     styleProps={{ marginTop: spacingDistance(2) }}
-                    onClickHandle={() =>
-                        sendPostRequest("/register-user", { ...formState }).then((response) => console.log(response))
-                    }
+                    onClickHandle={handleSendForm}
                 >
-                    Register
+                    {authMode === "registration" ? "Register" : "Log In"}
                 </Button>
             </Container>
         </Modal>

@@ -12,6 +12,8 @@ import { Page } from "Components/page";
 import { store } from "State/store";
 
 const App = () => {
+    // -- RENDER --
+
     return (
         <BrowserRouter>
             <Provider store={store}>
