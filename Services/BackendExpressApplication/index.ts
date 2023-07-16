@@ -1,5 +1,7 @@
 import express from "express";
+import { User } from "./Types/user";
 let cors = require("cors");
+const bcrypt = require("bcrypt");
 
 const app: express.Application = express();
 
@@ -7,7 +9,6 @@ const port: number = 5200;
 
 // Handle the coming data.
 app.use(express.json());
-
 app.use(cors());
 
 // Handle '/', path of the api.
@@ -21,24 +22,31 @@ app.get("/", (_req, _res): void => {
 
 let fake_db: any = [];
 
-type User = { email: string; firstName: string; lastName: string; password: string };
-
-// Handle '/create', path for create user
-app.post("/register-user", (_req, _res): void => {
-    // Fetched the user using body data
+// Register User
+app.post("/register-user", async (_req, _res) => {
     const user: User = _req.body as User;
-    const { email, lastName, firstName, password } = user;
+    const { password } = user;
 
-    // Assign the user in fake_db with id as a index
-    fake_db.push(user);
+    try {
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
 
-    console.log(firstName);
-    console.log(fake_db);
+        const userWithHashedPassword: User = {
+            ...user,
+            password: hashedPassword,
+        };
 
-    _res.header("Access-Control-Allow-Origin", "*");
-    _res.json({
-        success: true,
-    });
+        fake_db.push(userWithHashedPassword);
+
+        console.log(fake_db);
+
+        _res.json({
+            success: true,
+        });
+    } catch (e) {
+        console.log(e);
+        _res.status(500).send();
+    }
 });
 
 // Server setup

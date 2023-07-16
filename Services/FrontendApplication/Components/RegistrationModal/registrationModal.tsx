@@ -135,7 +135,7 @@ export const RegistrationModal = ({ isOpen }: RegistrationModalProps) => {
                     buttonType="primary"
                     styleProps={{ marginTop: spacingDistance(2) }}
                     onClickHandle={() =>
-                        sendPostRequest("/register-user", { formState }).then((response) => console.log(response))
+                        sendPostRequest("/register-user", { ...formState }).then((response) => console.log(response))
                     }
                 >
                     Register
