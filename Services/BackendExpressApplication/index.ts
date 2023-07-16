@@ -3,6 +3,7 @@ import { User } from "./Types/user";
 let cors = require("cors");
 const bcrypt = require("bcrypt");
 import mongoose from "mongoose";
+import { LogInRequestBody } from "./Types/logInRequestBody";
 const UserSchema = require("./Models/userModel");
 
 const app: express.Application = express();
@@ -47,6 +48,27 @@ app.post("/register-user", async (_req, _res) => {
         console.log(fake_db);
 
         _res.json({ usera });
+    } catch (e) {
+        console.log(e);
+        _res.status(500).send();
+    }
+});
+
+// Login User
+app.get("/log-in", async (_req, _res) => {
+    const loginData: LogInRequestBody = _req.body as LogInRequestBody;
+    const { email, password } = loginData;
+
+    try {
+        const user = await UserSchema.findOne({ email: email });
+
+        const matches = await bcrypt.compare(password, user.password);
+
+        if (matches) {
+            _res.json({ user });
+        } else {
+            _res.status(500).send();
+        }
     } catch (e) {
         console.log(e);
         _res.status(500).send();
