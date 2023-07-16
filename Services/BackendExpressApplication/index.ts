@@ -2,6 +2,8 @@ import express from "express";
 import { User } from "./Types/user";
 let cors = require("cors");
 const bcrypt = require("bcrypt");
+import mongoose from "mongoose";
+const UserSchema = require("./Models/userModel");
 
 const app: express.Application = express();
 
@@ -36,21 +38,29 @@ app.post("/register-user", async (_req, _res) => {
             password: hashedPassword,
         };
 
+        const usera = await UserSchema.create(userWithHashedPassword);
+
+        console.log(usera);
+
         fake_db.push(userWithHashedPassword);
 
         console.log(fake_db);
 
-        _res.json({
-            success: true,
-        });
+        _res.json({ usera });
     } catch (e) {
         console.log(e);
         _res.status(500).send();
     }
 });
 
-// Server setup
-app.listen(port, () => {
-    console.log(`TypeScript with Express
-		http://localhost:${port}/`);
-});
+mongoose
+    .connect("mongodb+srv://felixwang:3584gVenus@cluster0.ge6vnss.mongodb.net/?retryWrites=true&w=majority")
+    .then(() => {
+        console.log("Connected to Mongodb.");
+
+        // Server setup
+        app.listen(port, () => {
+            console.log(`Server runing on http://localhost:${port}/`);
+        });
+    })
+    .catch((e) => console.log(e));
