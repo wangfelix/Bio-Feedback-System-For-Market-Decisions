@@ -10,6 +10,7 @@ import { Container } from "Components/container";
 import { Logo } from "Illustrations/Logo";
 import { useIsLoggedIn, usePage } from "Utils/hooks";
 import { setRegistrationModalOpen, setRegistrationModalState } from "State/Actions/actionCreators";
+import { NavBarProfileDropdown } from "Components/Navbar/Components/navBarProfileDropdown";
 
 export const NavBar = () => {
     const dispatch = useDispatch();
@@ -138,6 +139,8 @@ export const NavBar = () => {
                         </Button>
                     </Row>
                 )}
+
+                {isLoggedIn && <NavBarProfileDropdown />}
             </Row>
         </nav>
     );

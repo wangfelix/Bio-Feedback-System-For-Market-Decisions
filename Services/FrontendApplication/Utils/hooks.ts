@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
+import { TypedUseSelectorHook, useSelector as useReduxSelector } from "react-redux";
 
 import { getPageFromPathname, getViewportDimensions } from "Utils/helpers";
+import { RootState } from "State/Reducers";
 
 /**
  * Returns the current URL's pathname without any subdirectories or query parameters.
@@ -38,6 +40,6 @@ export const useViewportDimensions = () => {
     return viewportDimensions;
 };
 
-export const useIsLoggedIn = () => {
-    return true;
-};
+export const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector;
+
+export const useIsLoggedIn = () => useSelector<boolean>((state) => state.me.isLoggedIn);

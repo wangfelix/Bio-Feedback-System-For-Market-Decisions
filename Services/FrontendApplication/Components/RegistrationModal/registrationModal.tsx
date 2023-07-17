@@ -38,10 +38,8 @@ export const RegistrationModal = ({ isOpen }: RegistrationModalProps) => {
     const handleSendForm = () => {
         if (authMode === "login") {
             dispatch(logInUser(formState) as any);
-            //sendPostRequest("/log-in", { ...formState }).then((response) => console.log(response));
         } else {
             dispatch(registerUser(formState) as any);
-            //sendPostRequest("/register-user", { ...formState }).then((response) => console.log(response));
         }
     };
 
