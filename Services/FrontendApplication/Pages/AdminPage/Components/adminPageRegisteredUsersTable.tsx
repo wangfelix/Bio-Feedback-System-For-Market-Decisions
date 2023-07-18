@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 import { BORDER_RADIUS, Colors, spacingDistance, Z_INDEX } from "Utils/globalStyles";
 import { Text } from "Components/text";
@@ -6,7 +7,6 @@ import { Container } from "Components/container";
 import { Row } from "Components/row";
 import { useAppDispatch } from "State/store";
 import { initialLoad } from "Pages/AdminPage/Store/adminPageThunks";
-import { useSelector } from "react-redux";
 import { RootState } from "State/Reducers";
 import { User } from "State/Reducers/meReducer";
 import { AdminPageRegisteredUsersTableTableRow } from "Pages/AdminPage/Components/adminPageSetMediCoinContractAddressForm";
