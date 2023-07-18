@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { LandingPage } from "Pages/LandingPage/landingPage";
 import { HistoryPage } from "Pages/HistoryPage/historyPage";
 import { LiveFeedPage } from "Pages/liveFeedPage";
-import { AdminPage } from "Pages/adminPage";
+import { AdminPage } from "Pages/AdminPage/adminPage";
 import { SensorsAndDevicesPage } from "Pages/sensorsAndDevicesPage";
 import { Paths } from "Utils/paths";
 import { Page } from "Components/page";

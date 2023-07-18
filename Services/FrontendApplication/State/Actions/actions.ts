@@ -1,5 +1,5 @@
 import { ActionType } from "State/Actions/actionTypes";
-import { MeData } from "State/Reducers/meReducer";
+import { User } from "State/Reducers/meReducer";
 
 // -- MODALS --
 
@@ -19,7 +19,7 @@ export type ModalAction = RegistrationModalAction | RegistrationModalStateAction
 
 export interface MeLogIn {
     type: ActionType.SET_ME_IS_LOGGED_IN;
-    payload: MeData;
+    payload: User;
 }
 
 export interface MeLogOut {
@@ -28,3 +28,12 @@ export interface MeLogOut {
 }
 
 export type MeAction = MeLogIn | MeLogOut;
+
+// -- ADMIN --
+
+export interface AdminSetUsers {
+    type: ActionType.SET_USERS;
+    payload: User[];
+}
+
+export type AdminAction = AdminSetUsers;

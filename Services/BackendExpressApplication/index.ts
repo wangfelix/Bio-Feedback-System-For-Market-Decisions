@@ -75,6 +75,18 @@ app.post("/log-in", async (_req, _res) => {
     }
 });
 
+// Get all Users
+app.get("/get-users", async (_req, _res) => {
+    try {
+        const users = await UserSchema.find();
+
+        _res.json({ users });
+    } catch (e) {
+        console.log(e);
+        _res.status(500).send();
+    }
+});
+
 mongoose
     .connect("mongodb+srv://felixwang:3584gVenus@cluster0.ge6vnss.mongodb.net/?retryWrites=true&w=majority")
     .then(() => {

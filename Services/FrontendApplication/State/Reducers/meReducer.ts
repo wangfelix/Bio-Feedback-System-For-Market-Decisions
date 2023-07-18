@@ -3,10 +3,10 @@ import { ActionType } from "State/Actions/actionTypes";
 
 export type MeState = {
     isLoggedIn: boolean;
-    data: MeData;
+    data: User;
 };
 
-export type MeData = {
+export type User = {
     firstName: string;
     lastName: string;
     email: string;

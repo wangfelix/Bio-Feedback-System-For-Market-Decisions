@@ -1,5 +1,5 @@
 import { ActionType } from "State/Actions/actionTypes";
-import { MeData } from "State/Reducers/meReducer";
+import { User } from "State/Reducers/meReducer";
 
 // -- MODALS --
 
@@ -13,10 +13,16 @@ export const setRegistrationModalState = (state: "login" | "registration") => {
 
 // -- ME --
 
-export const logInMe = (data: MeData) => {
+export const logInMe = (data: User) => {
     return { type: ActionType.SET_ME_IS_LOGGED_IN, payload: data };
 };
 
 export const logOutMe = () => {
     return { type: ActionType.SET_ME_IS_LOGGED_OUT };
+};
+
+// -- ADMIN --
+
+export const setUsers = (users: User[]) => {
+    return { type: ActionType.SET_USERS, payload: users };
 };
