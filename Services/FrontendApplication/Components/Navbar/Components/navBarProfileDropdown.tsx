@@ -111,7 +111,7 @@ export const NavBarProfileDropdown = () => {
                                                     height: 40,
                                                     background:
                                                         hoveredItemIndex === index
-                                                            ? Colors.PRIMARY_ACCENT_HUE
+                                                            ? Colors.PRIMARY_ACCENT_HUE_DARKER
                                                             : Colors.TRANSPARENT,
                                                     borderRadius: BORDER_RADIUS,
                                                     padding: "0 10px",

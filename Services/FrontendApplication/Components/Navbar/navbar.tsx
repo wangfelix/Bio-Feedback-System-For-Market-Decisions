@@ -27,10 +27,9 @@ export const NavBar = () => {
 
     const navBarItemsLeft: NavBarItemProps[] = useMemo(
         () => [
-            { title: NavBarTabs.DASHBOARD, to: Paths.LANDING_PAGE, selected: page === Paths.LANDING_PAGE },
-
             ...(isLoggedIn
                 ? [
+                      { title: NavBarTabs.DASHBOARD, to: Paths.LANDING_PAGE, selected: page === Paths.LANDING_PAGE },
                       ...(isAdmin
                           ? [{ title: NavBarTabs.ADMIN, to: Paths.ADMIN_PAGE, selected: page === Paths.ADMIN_PAGE }]
                           : []),

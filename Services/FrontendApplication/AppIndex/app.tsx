@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import { LandingPage } from "Pages/landingPage";
+import { LandingPage } from "Pages/LandingPage/landingPage";
 import { HistoryPage } from "Pages/HistoryPage/historyPage";
 import { LiveFeedPage } from "Pages/liveFeedPage";
 import { AdminPage } from "Pages/adminPage";

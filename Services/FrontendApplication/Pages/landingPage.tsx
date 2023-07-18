@@ -1,6 +1,6 @@
 import React from "react";
 
-import HeroImage from "Illustrations/Präsidiumsgebäude_Bildweltjpg.jpg";
+import HeroImage from "Illustrations/hero-image.png";
 import { Container } from "Components/container";
 import { Colors, Z_INDEX } from "Utils/globalStyles";
 

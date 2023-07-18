@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router";
 import { TypedUseSelectorHook, useSelector as useReduxSelector } from "react-redux";
 
@@ -43,3 +43,12 @@ export const useViewportDimensions = () => {
 export const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector;
 
 export const useIsLoggedIn = () => useSelector<boolean>((state) => state.me.isLoggedIn);
+
+/**
+ * Checks, if the user is using a mobile device.
+ */
+export const useIsMobile = () => {
+    const { viewportWidth } = useViewportDimensions();
+
+    return useMemo(() => viewportWidth <= 900, [viewportWidth]);
+};
