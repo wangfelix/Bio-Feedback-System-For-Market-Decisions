@@ -26,10 +26,6 @@ export const AdminPageRegisteredUsersTable = () => {
         dispatch(initialLoad() as any);
     }, []);
 
-    useEffect(() => {
-        console.log(registeredUsers);
-    }, [registeredUsers]);
-
     // -- RENDER --
 
     return (
