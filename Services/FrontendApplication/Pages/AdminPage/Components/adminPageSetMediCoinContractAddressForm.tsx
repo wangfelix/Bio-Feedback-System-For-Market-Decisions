@@ -1,4 +1,5 @@
 import React from "react";
+import { Pencil, Heart, Trash } from "phosphor-react";
 
 import { Row } from "Components/row";
 import { BORDER_RADIUS, Colors } from "Utils/globalStyles";
@@ -43,7 +44,9 @@ export const AdminPageRegisteredUsersTableTableRow = ({
             {email}
         </Container>
 
-        <Container styleProps={{ height: "100%", justifyContent: "center", padding: "0 20px" }}>Hallo</Container>
+        <Container styleProps={{ height: "100%", justifyContent: "center", padding: "0 20px" }}>
+            {Math.floor(Math.random() * (20 + 1))}
+        </Container>
 
         <Container
             styleProps={{
@@ -53,7 +56,19 @@ export const AdminPageRegisteredUsersTableTableRow = ({
                 background: isSelected ? Colors.PRIMARY_ACCENT_HUE_DARKER : Colors.GREY_LIGHT,
             }}
         >
-            Tschüss
+            <Row styleProps={{ justifyContent: "end" }}>
+                <Container styleProps={{ width: 35, height: 25, alignItems: "center", justifyContent: "center" }}>
+                    <Heart color={Colors.GREY} size={22} />
+                </Container>
+
+                <Container styleProps={{ width: 35, height: 25, alignItems: "center", justifyContent: "center" }}>
+                    <Pencil color={Colors.GREY} size={22} />
+                </Container>
+
+                <Container styleProps={{ width: 35, height: 25, alignItems: "center", justifyContent: "center" }}>
+                    <Trash color={Colors.RED} size={22} />
+                </Container>
+            </Row>
         </Container>
     </Row>
 );

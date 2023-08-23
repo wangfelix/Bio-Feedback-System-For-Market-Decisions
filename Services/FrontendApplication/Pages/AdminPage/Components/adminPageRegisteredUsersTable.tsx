@@ -90,6 +90,7 @@ export const AdminPageRegisteredUsersTable = () => {
                             justifyContent: "center",
                             alignItems: "center",
                             margin: `${spacingDistance(0.5)}`,
+                            marginBottom: spacingDistance(2),
                         }}
                     >
                         <AdminPageRegisteredUsersTableTableRow
