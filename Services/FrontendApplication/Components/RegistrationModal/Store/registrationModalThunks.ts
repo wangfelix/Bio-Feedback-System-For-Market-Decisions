@@ -4,7 +4,7 @@ import { logInMe, setRegistrationModalOpen } from "State/Actions/actionCreators"
 import { AppDispatch } from "State/store";
 
 export const registerUser = (formState: RegistrationFormState) => (dispatch: AppDispatch) =>
-    sendPostRequest("/register-user", { ...formState }).then((response) => {
+    sendPostRequest("/register-user", { ...formState, sessions: [] }).then((response) => {
         dispatch(setRegistrationModalOpen(false));
         console.log(response);
     });
