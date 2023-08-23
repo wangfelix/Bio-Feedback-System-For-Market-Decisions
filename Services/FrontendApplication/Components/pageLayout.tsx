@@ -57,8 +57,9 @@ export const PageLayout = ({
                                     height: "200px",
                                 }}
                             >
-                                <Row>
-                                    {icon && <img src={icon} style={{ height: "28px", marginRight: "10px" }} />}
+                                <Row styleProps={{ alignItems: "center", gap: spacingDistance(1.5) }}>
+                                    {icon && icon}
+
                                     <h2>{heading}</h2>
                                 </Row>
 
@@ -103,8 +104,9 @@ export const PageLayout = ({
                                         height: "110px",
                                     }}
                                 >
-                                    <Row>
-                                        {icon && <img src={icon} style={{ height: "28px", marginRight: "10px" }} />}
+                                    <Row styleProps={{ alignItems: "center", gap: spacingDistance(1.5) }}>
+                                        {icon && icon}
+
                                         <h2>{heading}</h2>
                                     </Row>
 
