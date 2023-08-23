@@ -1,5 +1,6 @@
 import { ActionType } from "State/Actions/actionTypes";
 import { User } from "State/Reducers/meReducer";
+import { Device, Experiment } from "State/Reducers/sessionPageReducer";
 
 // -- MODALS --
 
@@ -37,3 +38,37 @@ export interface AdminSetUsers {
 }
 
 export type AdminAction = AdminSetUsers;
+
+// -- SESSION --
+
+export interface SessionSetSensors {
+    type: ActionType.SET_DEVICES;
+    payload: Device[];
+}
+
+export interface SessionSetFirstSensorFile {
+    type: ActionType.SET_FIRST_DEVICE_FILE;
+    payload: string;
+}
+
+export interface SessionSetExperiment {
+    type: ActionType.SET_EXPERIMENT;
+    payload: Experiment;
+}
+
+export interface SessionSetExperimentFile {
+    type: ActionType.SET_EXPERIMENT_FILE;
+    payload: string;
+}
+
+export interface SessionSetSessionName {
+    type: ActionType.SET_SESSION_NAME;
+    payload: string;
+}
+
+export type SessionAction =
+    | SessionSetExperiment
+    | SessionSetExperimentFile
+    | SessionSetSensors
+    | SessionSetSessionName
+    | SessionSetFirstSensorFile;

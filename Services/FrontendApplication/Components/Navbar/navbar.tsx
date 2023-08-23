@@ -11,6 +11,7 @@ import { Logo } from "Illustrations/Logo";
 import { useIsLoggedIn, usePage } from "Utils/hooks";
 import { setRegistrationModalOpen, setRegistrationModalState } from "State/Actions/actionCreators";
 import { NavBarProfileDropdown } from "Components/Navbar/Components/navBarProfileDropdown";
+import { SessionPagePaths } from "Pages/SessionPage/SessionPagePaths";
 
 export const NavBar = () => {
     const dispatch = useDispatch();
@@ -35,9 +36,9 @@ export const NavBar = () => {
                           : []),
                       { title: NavBarTabs.HISTORY, to: Paths.HISTORY_PAGE, selected: page === Paths.HISTORY_PAGE },
                       {
-                          title: NavBarTabs.LIVE_FEED,
-                          to: Paths.LIVE_FEED_PAGE,
-                          selected: page === Paths.LIVE_FEED_PAGE,
+                          title: NavBarTabs.SESSION,
+                          to: `${Paths.SESSION_PAGE}${SessionPagePaths.SETUP}`,
+                          selected: page === Paths.SESSION_PAGE,
                       },
                       {
                           title: NavBarTabs.SENSORS_AND_DEVICES,

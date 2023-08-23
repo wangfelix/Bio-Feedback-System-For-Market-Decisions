@@ -1,5 +1,6 @@
 import { ActionType } from "State/Actions/actionTypes";
 import { User } from "State/Reducers/meReducer";
+import { Device, Experiment } from "State/Reducers/sessionPageReducer";
 
 // -- MODALS --
 
@@ -25,4 +26,26 @@ export const logOutMe = () => {
 
 export const setUsers = (users: User[]) => {
     return { type: ActionType.SET_USERS, payload: users };
+};
+
+// -- SESSION --
+
+export const setDevices = (devices: Device[]) => {
+    return { type: ActionType.SET_DEVICES, payload: devices };
+};
+
+export const setFirstDeviceFile = (deviceFile: string) => {
+    return { type: ActionType.SET_FIRST_DEVICE_FILE, payload: deviceFile };
+};
+
+export const setExperiment = (experiment: Experiment) => {
+    return { type: ActionType.SET_EXPERIMENT, payload: experiment };
+};
+
+export const setExperimentFile = (experimentFile: string) => {
+    return { type: ActionType.SET_EXPERIMENT_FILE, payload: experimentFile };
+};
+
+export const setSessionName = (name: string) => {
+    return { type: ActionType.SET_SESSION_NAME, payload: name };
 };

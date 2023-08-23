@@ -31,7 +31,7 @@ export const percent = (percentage: number) => `${percentage}%`;
 export enum NavBarTabs {
     DASHBOARD = "Dashboard",
     HISTORY = "History",
-    LIVE_FEED = "Live Feed",
+    SESSION = "Session",
     SENSORS_AND_DEVICES = "Sensors and Devices",
     ADMIN = "Admin Panel",
 }

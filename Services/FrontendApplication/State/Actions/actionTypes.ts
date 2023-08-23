@@ -12,4 +12,12 @@ export enum ActionType {
     // -- ADMIN --
 
     SET_USERS = "adminSetUsers",
+
+    // -- SESSION --
+
+    SET_DEVICES = "setDevices",
+    SET_FIRST_DEVICE_FILE = "setFirstDeviceFile",
+    SET_EXPERIMENT = "setExperiment",
+    SET_EXPERIMENT_FILE = "setExperimentFile",
+    SET_SESSION_NAME = "setSessionName",
 }

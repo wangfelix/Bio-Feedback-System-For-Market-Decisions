@@ -1,7 +1,7 @@
 export enum Paths {
     LANDING_PAGE = "/",
     HISTORY_PAGE = "/history",
-    LIVE_FEED_PAGE = "/live-feed",
+    SESSION_PAGE = "/session",
     SENSORS_AND_DEVICES_PAGE = "/sensors-and-devices",
     ADMIN_PAGE = "/admin",
 }

@@ -1,15 +1,15 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { LandingPage } from "Pages/LandingPage/landingPage";
 import { HistoryPage } from "Pages/HistoryPage/historyPage";
-import { LiveFeedPage } from "Pages/liveFeedPage";
 import { AdminPage } from "Pages/AdminPage/adminPage";
 import { SensorsAndDevicesPage } from "Pages/sensorsAndDevicesPage";
 import { Paths } from "Utils/paths";
 import { Page } from "Components/page";
 import { store } from "State/store";
+import { SessionRouter } from "Pages/SessionPage/sessionRouter";
 
 const App = () => {
     // -- RENDER --
@@ -23,7 +23,7 @@ const App = () => {
 
                         <Route path={Paths.HISTORY_PAGE} Component={HistoryPage} />
 
-                        <Route path={Paths.LIVE_FEED_PAGE} Component={LiveFeedPage} />
+                        <Route path={`${Paths.SESSION_PAGE}/*`} element={<SessionRouter />} />
 
                         <Route path={Paths.SENSORS_AND_DEVICES_PAGE} Component={SensorsAndDevicesPage} />
 

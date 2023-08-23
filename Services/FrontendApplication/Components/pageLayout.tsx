@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 
 import { Container } from "Components/container";
 import { Row } from "Components/row";
-import { MAX_PAGE_WIDTH } from "Utils/globalStyles";
+import { MAX_PAGE_WIDTH, spacingDistance } from "Utils/globalStyles";
 
 type PageLayoutProps = {
     icon?: any;
