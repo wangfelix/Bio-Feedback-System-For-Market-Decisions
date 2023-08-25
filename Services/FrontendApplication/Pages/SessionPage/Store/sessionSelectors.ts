@@ -5,3 +5,5 @@ export const selectSessionName = ({ sessionPage }: RootState) => sessionPage.nam
 export const selectSessionExperiment = ({ sessionPage }: RootState) => sessionPage.experiment;
 
 export const selectSessionDevice = ({ sessionPage }: RootState) => sessionPage.devices[0];
+
+export const selectSessionDuration = ({ sessionPage }: RootState) => sessionPage.duration;

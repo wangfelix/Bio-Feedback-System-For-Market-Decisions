@@ -66,9 +66,15 @@ export interface SessionSetSessionName {
     payload: string;
 }
 
+export interface SessionSetSessionDuration {
+    type: ActionType.SET_SESSION_DURATION;
+    payload: string;
+}
+
 export type SessionAction =
     | SessionSetExperiment
     | SessionSetExperimentFile
     | SessionSetSensors
     | SessionSetSessionName
-    | SessionSetFirstSensorFile;
+    | SessionSetFirstSensorFile
+    | SessionSetSessionDuration;

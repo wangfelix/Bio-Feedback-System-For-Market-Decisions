@@ -20,4 +20,5 @@ export enum ActionType {
     SET_EXPERIMENT = "setExperiment",
     SET_EXPERIMENT_FILE = "setExperimentFile",
     SET_SESSION_NAME = "setSessionName",
+    SET_SESSION_DURATION = "setSessionDuration",
 }

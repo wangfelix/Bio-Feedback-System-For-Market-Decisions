@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Lottie from "react-lottie";
 import { useNavigate } from "react-router-dom";
 import { Notebook } from "phosphor-react";
@@ -12,9 +12,16 @@ import { Button } from "Components/Button/button";
 import { Paths } from "Utils/paths";
 import { SessionPagePaths } from "Pages/SessionPage/SessionPagePaths";
 import Animation from "Illustrations/Lotties/animation_lkaabqti.json";
+import { useAppDispatch } from "State/store";
+import { setSessionDuration } from "State/Actions/actionCreators";
 
 export const SessionRunningPage = () => {
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+
+    // -- STATE --
+
+    const [sessionStartTime, setSessionStartTime] = useState<Date | null>(null);
 
     // -- HELPERS --
 
@@ -26,9 +33,28 @@ export const SessionRunningPage = () => {
         },
     };
 
+    // -- EFFECTS --
+
+    useEffect(() => setSessionStartTime(new Date()), []);
+
     // -- CALLBACKS --
 
     const handleFinishSession = () => {
+        const sessionEndTime = new Date();
+
+        const durationInMillis = sessionEndTime.getTime() - sessionStartTime.getTime();
+        const hours = Math.floor(durationInMillis / 3600000); // milliseconds in an hour
+        const minutes = Math.floor((durationInMillis % 3600000) / 60000); // milliseconds in a minute
+        const seconds = Math.floor((durationInMillis % 60000) / 1000); // milliseconds in a second
+
+        const formattedHours = hours < 10 ? `0${hours}` : `${hours}`;
+        const formattedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+        const formattedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+
+        const formattedDuration = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+
+        dispatch(setSessionDuration(formattedDuration));
+
         navigate(`${Paths.SESSION_PAGE}${SessionPagePaths.FILE_UPLOAD}`);
     };
 

@@ -49,3 +49,7 @@ export const setExperimentFile = (experimentFile: string) => {
 export const setSessionName = (name: string) => {
     return { type: ActionType.SET_SESSION_NAME, payload: name };
 };
+
+export const setSessionDuration = (duration: string) => {
+    return { type: ActionType.SET_SESSION_DURATION, payload: duration };
+};

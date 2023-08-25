@@ -48,6 +48,9 @@ export const sessionPageReducer = (state: SessionState = SESSION_INITIAL_STATE, 
         case ActionType.SET_SESSION_NAME:
             return { ...state, name: action.payload };
 
+        case ActionType.SET_SESSION_DURATION:
+            return { ...state, duration: action.payload };
+
         default:
             return state;
     }

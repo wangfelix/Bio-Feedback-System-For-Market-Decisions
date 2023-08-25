@@ -13,6 +13,7 @@ import { Button } from "Components/Button/button";
 import { Paths } from "Utils/paths";
 import {
     selectSessionDevice,
+    selectSessionDuration,
     selectSessionExperiment,
     selectSessionName,
 } from "Pages/SessionPage/Store/sessionSelectors";
@@ -32,6 +33,7 @@ export const SessionFileUploadPage = () => {
     const sessionName = useSelector(selectSessionName);
     const sessionExperiment = useSelector(selectSessionExperiment);
     const sessionDevice = useSelector(selectSessionDevice);
+    const sessionDuration = useSelector(selectSessionDuration);
 
     // -- CALLBACKS --
 
@@ -39,7 +41,7 @@ export const SessionFileUploadPage = () => {
         (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
             setIsSensorFileUploaded(true);
 
-            dispatch(setFirstDeviceFile(event.target.value));
+            dispatch(setFirstDeviceFile((event.target as HTMLInputElement)?.value));
         },
         [setIsSensorFileUploaded, setFirstDeviceFile, dispatch]
     );
@@ -105,6 +107,19 @@ export const SessionFileUploadPage = () => {
                     <Text
                         styleProps={{ fontSize: 18, marginBottom: spacingDistance(2) }}
                     >{`Upload Files for session: ${sessionName}`}</Text>
+
+                    <Row
+                        styleProps={{
+                            gap: spacingDistance(2),
+                            alignItems: "center",
+                            marginBottom: spacingDistance(1),
+                            justifyContent: "space-between",
+                        }}
+                    >
+                        <Text>Session Duration</Text>
+
+                        <Text>{sessionDuration}</Text>
+                    </Row>
 
                     <Row
                         styleProps={{
