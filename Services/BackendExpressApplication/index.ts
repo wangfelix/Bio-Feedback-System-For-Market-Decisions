@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 import mongoose from "mongoose";
 import { LogInRequestBody } from "./Types/logInRequestBody";
 import { PostTrackSessionRequestBody } from "./Types/postTrackSessionRequestBody";
+import { PostDeleteUsersRequestBody } from "./Types/postDeleteUsersRequestBody";
 const UserSchema = require("./Models/userModel");
 const SessionSchema = require("./Models/sessionModel");
 
@@ -39,6 +40,7 @@ app.post("/register-user", async (_req, _res) => {
         const userWithHashedPassword: User = {
             ...user,
             password: hashedPassword,
+            isAdmin: false,
         };
 
         const usera = await UserSchema.create(userWithHashedPassword);
@@ -83,6 +85,30 @@ app.get("/get-users", async (_req, _res) => {
         const users = await UserSchema.find();
 
         _res.json({ users });
+    } catch (e) {
+        console.log(e);
+        _res.status(500).send();
+    }
+});
+
+// Delete a user
+app.post("/delete-user", async (_req, _res) => {
+    const deleteUsersRequestBody: PostDeleteUsersRequestBody = _req.body as PostDeleteUsersRequestBody;
+    const { me, email } = deleteUsersRequestBody;
+
+    console.log(me);
+
+    const requestSender = await UserSchema.findOne({ email: me.email });
+
+    if (!requestSender.isAdmin) {
+        // Deleting a user an only be done by an administrator.
+        _res.status(403).send();
+    }
+
+    try {
+        await UserSchema.findOneAndRemove({ email: email });
+
+        _res.status(200).send();
     } catch (e) {
         console.log(e);
         _res.status(500).send();
