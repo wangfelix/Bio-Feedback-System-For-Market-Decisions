@@ -1,1 +1,1 @@
-export type User = { email: string; firstName: string; lastName: string; password: string };
+export type User = { email: string; firstName: string; lastName: string; password: string; isAdmin: boolean };
