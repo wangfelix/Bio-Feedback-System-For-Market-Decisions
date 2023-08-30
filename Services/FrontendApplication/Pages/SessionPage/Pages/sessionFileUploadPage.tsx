@@ -19,6 +19,8 @@ import {
 } from "Pages/SessionPage/Store/sessionSelectors";
 import { useAppDispatch } from "State/store";
 import { setExperimentFile, setFirstDeviceFile } from "State/Actions/actionCreators";
+import { apiPostTrackSession } from "../../../Api/requests";
+import { selectMeId } from "State/globalSelectors";
 
 export const SessionFileUploadPage = () => {
     const navigate = useNavigate();
@@ -30,6 +32,7 @@ export const SessionFileUploadPage = () => {
     const [isExperimentFileUploaded, setIsExperimentFileUploaded] = useState(false);
     const [isSensorFileUploaded, setIsSensorFileUploaded] = useState(false);
 
+    const userId = useSelector(selectMeId);
     const sessionName = useSelector(selectSessionName);
     const sessionExperiment = useSelector(selectSessionExperiment);
     const sessionDevice = useSelector(selectSessionDevice);
@@ -56,7 +59,19 @@ export const SessionFileUploadPage = () => {
     );
 
     const handleFinishSession = () => {
-        navigate(`${Paths.HISTORY_PAGE}`);
+        apiPostTrackSession({
+            userId: userId,
+            sessionName: sessionName,
+            sensorName: sessionDevice.alias,
+            sensorId: sessionDevice.id,
+            sensorFilePath: sessionDevice.fileName,
+            duration: sessionDuration,
+            experimentAlias: sessionExperiment.alias,
+            experimentId: sessionExperiment.id,
+            experimentFilePath: sessionExperiment.fileName,
+        })
+            .then(() => navigate(`${Paths.HISTORY_PAGE}`))
+            .catch((e) => console.log(e));
     };
 
     // -- RENDER --

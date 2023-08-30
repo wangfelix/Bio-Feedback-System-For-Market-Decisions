@@ -1,7 +1,23 @@
 import mongoose from "mongoose";
 
 const SessionSchema = new mongoose.Schema({
-    sensors: {
+    userId: {
+        type: [String],
+        required: [true],
+    },
+    name: {
+        type: [String],
+        required: [true],
+    },
+    sensorName: {
+        type: [String],
+        required: [true],
+    },
+    sensorId: {
+        type: [String],
+        required: [true],
+    },
+    sensorFilePath: {
         type: [String],
         required: [true],
     },
@@ -9,14 +25,18 @@ const SessionSchema = new mongoose.Schema({
         type: String,
         required: [true],
     },
-    experiment: {
+    experimentAlias: {
         type: String,
         required: [true],
     },
-    files: {
-        type: [String],
+    experimentId: {
+        type: String,
+        required: [true],
+    },
+    experimentFilePath: {
+        type: String,
         required: [true],
     },
 });
 
-module.exports = SessionSchema;
+module.exports = mongoose.model("SessionSchema", SessionSchema, "sessions");

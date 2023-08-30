@@ -4,7 +4,9 @@ let cors = require("cors");
 const bcrypt = require("bcrypt");
 import mongoose from "mongoose";
 import { LogInRequestBody } from "./Types/logInRequestBody";
+import { PostTrackSessionRequestBody } from "./Types/postTrackSessionRequestBody";
 const UserSchema = require("./Models/userModel");
+const SessionSchema = require("./Models/sessionModel");
 
 const app: express.Application = express();
 
@@ -67,7 +69,7 @@ app.post("/log-in", async (_req, _res) => {
         if (matches) {
             _res.json({ user });
         } else {
-            _res.status(500).send();
+            _res.status(403).send();
         }
     } catch (e) {
         console.log(e);
@@ -81,6 +83,40 @@ app.get("/get-users", async (_req, _res) => {
         const users = await UserSchema.find();
 
         _res.json({ users });
+    } catch (e) {
+        console.log(e);
+        _res.status(500).send();
+    }
+});
+
+// Track Session
+app.post("/track-session", async (_req, _res) => {
+    const sessionData: PostTrackSessionRequestBody = _req.body as PostTrackSessionRequestBody;
+    const {
+        userId,
+        sensorFilePath,
+        experimentFilePath,
+        experimentAlias,
+        experimentId,
+        sensorName,
+        sessionName,
+        duration,
+        sensorId,
+    } = sessionData;
+
+    try {
+        const session = await SessionSchema.create({
+            userId: userId,
+            name: sessionName,
+            sensorName: sensorName,
+            sensorId: sensorId,
+            sensorFilePath: sensorFilePath,
+            duration: duration,
+            experimentAlias: experimentAlias,
+            experimentId: experimentId,
+            experimentFilePath: experimentFilePath,
+        });
+        _res.json({ session });
     } catch (e) {
         console.log(e);
         _res.status(500).send();

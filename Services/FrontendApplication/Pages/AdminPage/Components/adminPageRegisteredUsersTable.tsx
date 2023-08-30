@@ -9,7 +9,7 @@ import { useAppDispatch } from "State/store";
 import { initialLoad } from "Pages/AdminPage/Store/adminPageThunks";
 import { RootState } from "State/Reducers";
 import { User } from "State/Reducers/meReducer";
-import { AdminPageRegisteredUsersTableTableRow } from "Pages/AdminPage/Components/adminPageSetMediCoinContractAddressForm";
+import { AdminPageRegisteredUsersTableTableRow } from "Pages/AdminPage/Components/adminPageRegisteredUsersTableTableRow";
 
 export const AdminPageRegisteredUsersTable = () => {
     const dispatch = useAppDispatch();

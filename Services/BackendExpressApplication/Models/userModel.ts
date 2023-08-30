@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const SessionSchema = require("./sessionModel");
 
 const UserSchema = mongoose.Schema({
     firstName: {
@@ -17,10 +16,6 @@ const UserSchema = mongoose.Schema({
     email: {
         type: String,
         required: [true, "Password required"],
-    },
-    sessions: {
-        type: [SessionSchema],
-        required: [false],
     },
 });
 
