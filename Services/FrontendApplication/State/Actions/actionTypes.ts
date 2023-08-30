@@ -12,6 +12,7 @@ export enum ActionType {
     // -- ADMIN --
 
     SET_USERS = "adminSetUsers",
+    DELETE_USER = "deleteUser",
 
     // -- SESSION --
 

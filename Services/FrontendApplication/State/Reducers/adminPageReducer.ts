@@ -15,6 +15,9 @@ export const adminPageReducer = (state: AdminState = ADMIN_DATA_INITIAL_STATE, a
         case ActionType.SET_USERS:
             return { ...state, users: action.payload };
 
+        case ActionType.DELETE_USER:
+            return { ...state, users: state.users.filter((user) => user.email !== action.payload) };
+
         default:
             return state;
     }

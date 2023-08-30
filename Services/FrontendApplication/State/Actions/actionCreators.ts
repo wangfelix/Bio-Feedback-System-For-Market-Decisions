@@ -28,6 +28,10 @@ export const setUsers = (users: User[]) => {
     return { type: ActionType.SET_USERS, payload: users };
 };
 
+export const deleteUserByAdmin = (email: string) => {
+    return { type: ActionType.DELETE_USER, payload: email };
+};
+
 // -- SESSION --
 
 export const setDevices = (devices: Device[]) => {

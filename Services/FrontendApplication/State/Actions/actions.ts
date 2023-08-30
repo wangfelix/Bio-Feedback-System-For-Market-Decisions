@@ -37,7 +37,12 @@ export interface AdminSetUsers {
     payload: User[];
 }
 
-export type AdminAction = AdminSetUsers;
+export interface AdminDeleteUser {
+    type: ActionType.DELETE_USER;
+    payload: string;
+}
+
+export type AdminAction = AdminSetUsers | AdminDeleteUser;
 
 // -- SESSION --
 

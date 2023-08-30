@@ -11,31 +11,27 @@ import { Page } from "Components/page";
 import { store } from "State/store";
 import { SessionRouter } from "Pages/SessionPage/sessionRouter";
 
-const App = () => {
-    // -- RENDER --
+const App = () => (
+    <BrowserRouter>
+        <Provider store={store}>
+            <Page>
+                <Routes>
+                    <Route path={Paths.LANDING_PAGE} Component={LandingPage} />
 
-    return (
-        <BrowserRouter>
-            <Provider store={store}>
-                <Page>
-                    <Routes>
-                        <Route path={Paths.LANDING_PAGE} Component={LandingPage} />
+                    <Route path={Paths.HISTORY_PAGE} Component={HistoryPage} />
 
-                        <Route path={Paths.HISTORY_PAGE} Component={HistoryPage} />
+                    <Route path={`${Paths.SESSION_PAGE}/*`} element={<SessionRouter />} />
 
-                        <Route path={`${Paths.SESSION_PAGE}/*`} element={<SessionRouter />} />
+                    <Route path={Paths.SENSORS_AND_DEVICES_PAGE} Component={SensorsAndDevicesPage} />
 
-                        <Route path={Paths.SENSORS_AND_DEVICES_PAGE} Component={SensorsAndDevicesPage} />
+                    <Route path={Paths.ADMIN_PAGE} Component={AdminPage} />
 
-                        <Route path={Paths.ADMIN_PAGE} Component={AdminPage} />
-
-                        <Route Component={ErrorPage} />
-                    </Routes>
-                </Page>
-            </Provider>
-        </BrowserRouter>
-    );
-};
+                    <Route Component={ErrorPage} />
+                </Routes>
+            </Page>
+        </Provider>
+    </BrowserRouter>
+);
 
 const ErrorPage = () => <>404</>;
 
