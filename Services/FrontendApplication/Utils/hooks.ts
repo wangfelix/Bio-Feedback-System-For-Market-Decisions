@@ -44,6 +44,8 @@ export const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector;
 
 export const useIsLoggedIn = () => useSelector<boolean>((state) => state.me.isLoggedIn);
 
+export const useIsAdmin = () => useSelector<boolean>((state) => state.me.data.isAdmin);
+
 /**
  * Checks, if the user is using a mobile device.
  */

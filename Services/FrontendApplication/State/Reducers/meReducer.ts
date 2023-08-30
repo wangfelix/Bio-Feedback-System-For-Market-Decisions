@@ -11,6 +11,7 @@ export type User = {
     lastName: string;
     email: string;
     _id: string;
+    isAdmin: boolean;
 };
 
 export const ME_DATA_INITIAL_STATE = {
@@ -18,6 +19,7 @@ export const ME_DATA_INITIAL_STATE = {
     lastName: "Musterman",
     email: "max-musterman@gmail.com",
     _id: "123456",
+    isAdmin: false,
 };
 
 export const meReducer = (

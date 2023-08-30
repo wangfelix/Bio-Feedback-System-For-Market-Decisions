@@ -6,7 +6,7 @@ import { BORDER_RADIUS, Colors } from "Utils/globalStyles";
 import { Container } from "Components/container";
 import { User } from "State/Reducers/meReducer";
 
-export interface AdminPageRegisteredUsersTableTableRowProps extends User {
+export interface AdminPageRegisteredUsersTableTableRowProps extends Omit<User, "isAdmin"> {
     isSelected: boolean;
 }
 

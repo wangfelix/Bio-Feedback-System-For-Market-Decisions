@@ -8,7 +8,7 @@ import { Button } from "Components/Button/button";
 import { Row } from "Components/row";
 import { Container } from "Components/container";
 import { Logo } from "Illustrations/Logo";
-import { useIsLoggedIn, usePage } from "Utils/hooks";
+import { useIsAdmin, useIsLoggedIn, usePage } from "Utils/hooks";
 import { setRegistrationModalOpen, setRegistrationModalState } from "State/Actions/actionCreators";
 import { NavBarProfileDropdown } from "Components/Navbar/Components/navBarProfileDropdown";
 import { SessionPagePaths } from "Pages/SessionPage/SessionPagePaths";
@@ -22,7 +22,7 @@ export const NavBar = () => {
 
     const isLoggedIn = useIsLoggedIn();
 
-    const isAdmin = true;
+    const isAdmin = useIsAdmin();
 
     // -- MEMOIZED DATA --
 
