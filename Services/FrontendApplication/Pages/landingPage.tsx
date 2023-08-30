@@ -1,6 +1,20 @@
 import React from "react";
-import {Button} from "../Components/button";
+
+import HeroImage from "Illustrations/hero-image.png";
+import { Container } from "Components/container";
+import { Colors, Z_INDEX } from "Utils/globalStyles";
 
 export const LandingPage = () => {
-    return (<Button text="Log In"/>)
-}
+    const globalStyles = {
+        color: Colors.BLACK,
+        fontFamily: "Inter",
+        lineHeight: "1.5em",
+        zIndex: Z_INDEX.PAGE,
+    };
+
+    return (
+        <Container style={globalStyles}>
+            <img src={HeroImage} alt="Hero Bild" style={{ maxWidth: "100vw" }} />
+        </Container>
+    );
+};

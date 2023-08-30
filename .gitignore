@@ -10,4 +10,4 @@ lerna-debug.log
 npm-debug.log*
 /.changelog
 .npm/
-package-lock.json
+Services/FrontendApplication/package-lock.json
