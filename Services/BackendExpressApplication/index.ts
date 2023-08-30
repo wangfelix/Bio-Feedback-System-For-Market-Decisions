@@ -123,6 +123,18 @@ app.post("/track-session", async (_req, _res) => {
     }
 });
 
+// Get a list of all sessions
+app.get("/get-sessions", async (_req, _res) => {
+    try {
+        const sessions = await SessionSchema.find();
+
+        _res.json({ sessions: sessions });
+    } catch (e) {
+        console.log(e);
+        _res.status(500).send();
+    }
+});
+
 mongoose
     .connect("mongodb+srv://felixwang:3584gVenus@cluster0.ge6vnss.mongodb.net/?retryWrites=true&w=majority")
     .then(() => {
