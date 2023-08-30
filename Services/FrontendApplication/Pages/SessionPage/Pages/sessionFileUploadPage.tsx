@@ -19,7 +19,7 @@ import {
 } from "Pages/SessionPage/Store/sessionSelectors";
 import { useAppDispatch } from "State/store";
 import { setExperimentFile, setFirstDeviceFile } from "State/Actions/actionCreators";
-import { apiPostTrackSession } from "../../../Api/requests";
+import { apiPostTrackSession } from "Api/requests";
 import { selectMeId } from "State/globalSelectors";
 
 export const SessionFileUploadPage = () => {

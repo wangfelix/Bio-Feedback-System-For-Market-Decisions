@@ -1,4 +1,4 @@
-export type apiPostTrackSessionRequestBody = {
+export type ApiPostTrackSessionRequestBody = {
     userId: string;
     sessionName: string;
     sensorName: string;

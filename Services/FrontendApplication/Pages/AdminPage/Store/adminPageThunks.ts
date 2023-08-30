@@ -1,7 +1,7 @@
 import { AppDispatch } from "State/store";
-import { apiGetUsers, apiPostDeleteUser } from "../../../Api/requests";
+import { apiGetUsers, apiPostDeleteUser } from "Api/requests";
 import { deleteUserByAdmin, setUsers } from "State/Actions/actionCreators";
-import { ApiPostDeleteUserRequestBody } from "../../../Api/Interfaces/Api/Post/ApiPostDeleteUserRequestBody/apiPostDeleteUserRequestBody";
+import { ApiPostDeleteUserRequestBody } from "Api/Interfaces/Api/Post/ApiPostDeleteUserRequestBody/apiPostDeleteUserRequestBody";
 
 export const initialLoad = () => (dispatch: AppDispatch) => {
     apiGetUsers().then((response) => {

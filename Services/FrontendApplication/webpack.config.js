@@ -40,6 +40,7 @@ module.exports = {
             Illustrations: path.resolve(__dirname, "Illustrations"),
             Utils: path.resolve(__dirname, "Utils"),
             State: path.resolve(__dirname, "State"),
+            Api: path.resolve(__dirname, "Api"),
             process: "process/browser",
         },
     },

@@ -1,8 +1,8 @@
 import { sendGetRequest, sendPostRequest } from "Utils/api";
-import { apiPostTrackSessionRequestBody } from "./Interfaces/Api/Post/ApiPostTrackSessionRequestBody/apiPostTrackSessionRequestBody";
-import { ApiPostLogInRequestBody } from "./Interfaces/Api/Post/ApiPostLogInRequestBody/apiPostLogInRequestBody";
-import { ApiPostRegisterUserRequestBody } from "./Interfaces/Api/Post/ApiPostRegisterUserRequestBody/apiPostRegisterUserRequestBody";
-import { ApiPostDeleteUserRequestBody } from "./Interfaces/Api/Post/ApiPostDeleteUserRequestBody/apiPostDeleteUserRequestBody";
+import { ApiPostTrackSessionRequestBody } from "Api/Interfaces/Api/Post/ApiPostTrackSessionRequestBody/apiPostTrackSessionRequestBody";
+import { ApiPostLogInRequestBody } from "Api/Interfaces/Api/Post/ApiPostLogInRequestBody/apiPostLogInRequestBody";
+import { ApiPostRegisterUserRequestBody } from "Api/Interfaces/Api/Post/ApiPostRegisterUserRequestBody/apiPostRegisterUserRequestBody";
+import { ApiPostDeleteUserRequestBody } from "Api/Interfaces/Api/Post/ApiPostDeleteUserRequestBody/apiPostDeleteUserRequestBody";
 
 export const apiGetUsers = () => sendGetRequest("get-users").then((response) => response);
 
@@ -12,7 +12,7 @@ export const apiPostLoginUser = (data: ApiPostLogInRequestBody) =>
 export const apiPostRegisterUser = (data: ApiPostRegisterUserRequestBody) =>
     sendPostRequest("/register-user", { ...data }).then((response) => response);
 
-export const apiPostTrackSession = (data: apiPostTrackSessionRequestBody) =>
+export const apiPostTrackSession = (data: ApiPostTrackSessionRequestBody) =>
     sendPostRequest("/track-session", data).then((response) => response);
 
 export const apiPostDeleteUser = (data: ApiPostDeleteUserRequestBody) =>

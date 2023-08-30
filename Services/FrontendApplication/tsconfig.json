@@ -18,6 +18,9 @@
       ],
       "State/*": [
         "./State/*"
+      ],
+      "Api/*": [
+        "./Api/*"
       ]
     },
     "outDir": "./dist/",
