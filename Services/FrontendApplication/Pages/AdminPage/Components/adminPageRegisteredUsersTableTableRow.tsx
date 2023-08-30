@@ -1,11 +1,11 @@
 import React, { useCallback } from "react";
 import { Pencil, Heart, Trash } from "phosphor-react";
+import { useSelector } from "react-redux";
 
 import { Row } from "Components/row";
 import { BORDER_RADIUS, Colors } from "Utils/globalStyles";
 import { Container } from "Components/container";
 import { User } from "State/Reducers/meReducer";
-import { useSelector } from "react-redux";
 import { selectMeEmail } from "State/globalSelectors";
 import { useAppDispatch } from "State/store";
 import { deleteUser } from "Pages/AdminPage/Store/adminPageThunks";
