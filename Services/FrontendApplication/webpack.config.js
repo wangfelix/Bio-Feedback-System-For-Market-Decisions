@@ -29,10 +29,14 @@ module.exports = {
             { test: /\.png/, type: "asset/resource" },
             { test: /\.jpg/, type: "asset/resource" },
             { test: /\.svg/, type: "asset/resource" },
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
+            },
         ],
     },
     resolve: {
-        extensions: [".tsx", ".ts", ".js"],
+        extensions: [".tsx", ".ts", ".js", ".css"],
         // keep in sync with tsconfig.json
         alias: {
             Components: path.resolve(__dirname, "Components"),

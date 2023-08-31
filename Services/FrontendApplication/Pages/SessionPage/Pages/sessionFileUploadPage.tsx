@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Notebook } from "phosphor-react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { Notebook } from "phosphor-react";
 import { Input, InputLabel } from "@mui/material";
 
 import { PageLayout } from "Components/pageLayout";
@@ -21,6 +22,7 @@ import { setExperimentFile, setFirstDeviceFile } from "State/Actions/actionCreat
 import { apiPostTrackSession } from "Api/requests";
 import { selectMeId } from "State/globalSelectors";
 import { useTypedDispatch } from "Utils/hooks";
+import { ERROR_MESSAGE } from "Utils/helpers";
 
 export const SessionFileUploadPage = () => {
     const navigate = useNavigate();
@@ -71,7 +73,7 @@ export const SessionFileUploadPage = () => {
             experimentFilePath: sessionExperiment.fileName,
         })
             .then(() => navigate(`${Paths.HISTORY_PAGE}`))
-            .catch((e) => console.log(e));
+            .catch(() => toast.error(ERROR_MESSAGE.UNKNOW));
     };
 
     // -- RENDER --

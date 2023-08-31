@@ -1,6 +1,8 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 import { LandingPage } from "Pages/LandingPage/landingPage";
 import { HistoryPage } from "Pages/HistoryPage/historyPage";
@@ -28,6 +30,19 @@ const App = () => (
 
                     <Route Component={ErrorPage} />
                 </Routes>
+
+                <ToastContainer
+                    position="top-left"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="colored"
+                />
             </Page>
         </Provider>
     </BrowserRouter>

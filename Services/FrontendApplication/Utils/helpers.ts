@@ -19,3 +19,7 @@ export const getViewportDimensions = () => {
         viewportHeight,
     };
 };
+
+export enum ERROR_MESSAGE {
+    UNKNOW = "An Error Occured. Please check if the backend server is running, restart it or retry with an vpn connection.",
+}
