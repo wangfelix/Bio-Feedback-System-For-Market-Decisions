@@ -55,4 +55,5 @@
           14 const port: number = [your desired port];
          ```
     
-    4. Access the application inside your browser by visiting `http://localhost:8080/`. 
+    4. Access the application inside your browser by visiting `http://localhost:8080/`.
+       > :warning: If you want to access the Admin Page, log in as the admin with the credentials **email**: "a" and **password** "a".
