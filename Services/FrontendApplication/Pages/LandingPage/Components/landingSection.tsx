@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 
 import { Container } from "Components/container";
-import { BORDER_RADIUS, Colors, MAX_PAGE_WIDTH } from "Utils/globalStyles";
+import { BORDER_RADIUS, Colors, MAX_PAGE_WIDTH, percent } from "Utils/globalStyles";
 import { Row } from "Components/row";
 import { useIsMobile } from "Utils/hooks";
 
@@ -29,7 +29,7 @@ export const LandingSection = ({ title, backgroundColor, content, contentLeft, c
         >
             <Container
                 styleProps={{
-                    width: "100%",
+                    width: percent(100),
                     minWidth: 400,
                     maxWidth: MAX_PAGE_WIDTH,
                     padding: "80px 70px",
@@ -50,7 +50,7 @@ export const LandingSection = ({ title, backgroundColor, content, contentLeft, c
 
                 <Row
                     styleProps={{
-                        width: "100%",
+                        width: percent(100),
                         alignItems: "center",
                         justifyContent: "space-between",
                         maxWidth: 1700,
@@ -61,14 +61,14 @@ export const LandingSection = ({ title, backgroundColor, content, contentLeft, c
                         <>
                             <Container
                                 style={{
-                                    width: isMobile ? "100%" : "45%",
+                                    width: percent(isMobile ? 100 : 45),
                                     minWidth: 400,
                                     marginBottom: isMobile ? 50 : 0,
                                 }}
                             >
                                 {contentLeft}
                             </Container>
-                            <Container style={{ width: isMobile ? "100%" : "50%", minWidth: 400 }}>
+                            <Container style={{ width: percent(isMobile ? 100 : 50), minWidth: 400 }}>
                                 {contentRight}
                             </Container>
                         </>

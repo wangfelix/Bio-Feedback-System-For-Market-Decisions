@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 
-import { Colors } from "Utils/globalStyles";
+import { Colors, percent } from "Utils/globalStyles";
 
 type LandingPageSectionProps = {
     children?: ReactNode;
@@ -17,7 +17,7 @@ export const LandingPageSection = ({ children, sectionTitle, color, styleProps }
         flexDirection: "column" as "column",
         justifyContent: "center",
         alignItems: "center",
-        width: "100%",
+        width: percent(100),
         height: color === "transparent" ? "700px" : "automatic",
         padding: "50px 100px",
         background:
@@ -39,6 +39,7 @@ export const LandingPageSection = ({ children, sectionTitle, color, styleProps }
     return (
         <section style={sectionStyle}>
             {sectionTitle && <h2 style={headingStyle}>{sectionTitle}</h2>}
+
             {children}
         </section>
     );

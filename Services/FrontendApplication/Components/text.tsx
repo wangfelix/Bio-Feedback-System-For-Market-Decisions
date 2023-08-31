@@ -10,6 +10,7 @@ type TextProps = {
 
 export const Text = ({ children, textType: textTypeProp, styleProps }: TextProps) => {
     const textType = textTypeProp ?? "text";
+
     // -- STYLES --
 
     const textStyle = {

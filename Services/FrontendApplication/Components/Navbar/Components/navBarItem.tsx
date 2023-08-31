@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { Colors } from "Utils/globalStyles";
+import { Colors, percent } from "Utils/globalStyles";
 
 export type NavBarItemProps = {
     title: string;
@@ -15,7 +15,7 @@ export const NavBarItem = ({ title, selected, to: propsTo }: NavBarItemProps) =>
     const navBarItemStyle = {
         marginRight: "50px",
         display: "flex",
-        height: "100%",
+        height: percent(100),
         position: "relative" as "relative",
         fontFamily: "Work Sans",
     };
@@ -33,7 +33,7 @@ export const NavBarItem = ({ title, selected, to: propsTo }: NavBarItemProps) =>
         bottom: "0",
         right: "0",
         height: selected ? "5px" : 0,
-        width: "100%",
+        width: percent(100),
         borderStyle: "none",
         background: selected ? Colors.GREEN_ACCENT : Colors.TRANSPARENT,
         transition: "background .3s, height .3s",
