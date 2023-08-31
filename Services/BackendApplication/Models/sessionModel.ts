@@ -2,23 +2,23 @@ import mongoose from "mongoose";
 
 const SessionSchema = new mongoose.Schema({
     userId: {
-        type: [String],
+        type: String,
         required: [true],
     },
     name: {
-        type: [String],
+        type: String,
         required: [true],
     },
     sensorName: {
-        type: [String],
+        type: String,
         required: [true],
     },
     sensorId: {
-        type: [String],
+        type: String,
         required: [true],
     },
     sensorFilePath: {
-        type: [String],
+        type: String,
         required: [true],
     },
     duration: {

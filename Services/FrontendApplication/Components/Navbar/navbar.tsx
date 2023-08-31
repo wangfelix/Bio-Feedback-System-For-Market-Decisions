@@ -1,5 +1,5 @@
-import React, { useMemo } from "react";
-import { useDispatch } from "react-redux";
+import React, { useCallback, useMemo } from "react";
+import { batch, useDispatch } from "react-redux";
 
 import { NAVBAR_HEIGHT, Colors, NavBarTabs, Z_INDEX, MAX_PAGE_WIDTH, spacingDistance } from "Utils/globalStyles";
 import { Paths } from "Utils/paths";
@@ -53,12 +53,15 @@ export const NavBar = () => {
 
     // -- CALLBACKS --
 
-    // const openRegistrationModal = () => dispatch(setRegistrationModalOpen(true));
-
-    const handleOpenRegistrationModal = (authMode: "login" | "registration") => {
-        dispatch(setRegistrationModalState(authMode));
-        dispatch(setRegistrationModalOpen(true));
-    };
+    const handleOpenRegistrationModal = useCallback(
+        (authMode: "login" | "registration") => {
+            batch(() => {
+                dispatch(setRegistrationModalState(authMode));
+                dispatch(setRegistrationModalOpen(true));
+            });
+        },
+        [batch, dispatch, setRegistrationModalState, setRegistrationModalOpen]
+    );
 
     // -- STYLES --
 

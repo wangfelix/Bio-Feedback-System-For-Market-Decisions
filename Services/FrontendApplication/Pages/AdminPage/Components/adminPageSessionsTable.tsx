@@ -1,20 +1,20 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { BORDER_RADIUS, Colors, spacingDistance, Z_INDEX } from "Utils/globalStyles";
 import { Text } from "Components/text";
 import { Container } from "Components/container";
 import { Row } from "Components/row";
 import { RootState } from "State/Reducers";
-import { User } from "State/Reducers/meReducer";
-import { AdminPageRegisteredUsersTableTableRow } from "Pages/AdminPage/Components/adminPageRegisteredUsersTableTableRow";
+import { Session } from "State/Reducers/adminPageReducer";
+import { AdminPageSessionsTableTableRow } from "Pages/AdminPage/Components/adminPageSessionsTableRow";
+import { BORDER_RADIUS, Colors, spacingDistance, Z_INDEX } from "Utils/globalStyles";
 
-export const AdminPageRegisteredUsersTable = () => {
+export const AdminPageSessionsTable = () => {
     // -- STATE --
 
-    const registeredUsers = useSelector<RootState, User[]>((state) => state.adminPage.users);
+    const sessions = useSelector<RootState, Session[]>((state) => state.adminPage.sessions);
 
-    const tableTitles = ["Name", "Email", "Sessions"];
+    const tableTitles = ["Session Name", "ID", "User ID", "Experiment", "Duration", "Sensor Name"];
 
     // -- RENDER --
 
@@ -27,7 +27,7 @@ export const AdminPageRegisteredUsersTable = () => {
             }}
         >
             <Text textType="text" styleProps={{ marginBottom: 10 }}>
-                Registered Users
+                Logged Sessions
             </Text>
 
             <Container
@@ -55,7 +55,7 @@ export const AdminPageRegisteredUsersTable = () => {
                             alignSelf: "center",
                             width: "93%",
                             display: "grid",
-                            gridTemplateColumns: "150px 250px 150px 1fr",
+                            gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr",
                             margin: "25px 0",
                             position: "relative",
                             right: "10px",
@@ -72,7 +72,7 @@ export const AdminPageRegisteredUsersTable = () => {
                     </Row>
                 </Row>
 
-                {registeredUsers?.map((user) => (
+                {sessions?.map((session) => (
                     <Container
                         styleProps={{
                             width: "100%",
@@ -83,12 +83,14 @@ export const AdminPageRegisteredUsersTable = () => {
                             marginBottom: spacingDistance(2),
                         }}
                     >
-                        <AdminPageRegisteredUsersTableTableRow
+                        <AdminPageSessionsTableTableRow
                             isSelected={false}
-                            firstName={user.firstName}
-                            lastName={user.lastName}
-                            email={user.email}
-                            _id={user._id}
+                            name={session.name}
+                            duration={session.duration}
+                            userId={session.userId}
+                            _id={session._id}
+                            sensorName={session.sensorName}
+                            experimentAlias={session.experimentAlias}
                         />
                     </Container>
                 ))}

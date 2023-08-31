@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { User as UserIcon } from "phosphor-react";
 
@@ -9,12 +9,21 @@ import { PageLayout } from "Components/pageLayout";
 import { Row } from "Components/row";
 import { RootState } from "State/Reducers";
 import { User } from "State/Reducers/meReducer";
-import { BORDER_RADIUS, Colors } from "Utils/globalStyles";
+import { BORDER_RADIUS, Colors, spacingDistance } from "Utils/globalStyles";
+import { initialLoad } from "Pages/AdminPage/Store/adminPageThunks";
+import { useAppDispatch } from "State/store";
+import { AdminPageSessionsTable } from "Pages/AdminPage/Components/adminPageSessionsTable";
 
 export const AdminPage = () => {
+    const dispatch = useAppDispatch();
+
     // -- STATE --
 
     const registeredUsers = useSelector<RootState, User[]>((state) => state.adminPage.users);
+
+    // -- EFFECTS --
+
+    useEffect(() => dispatch(initialLoad() as any), []);
 
     // -- RENDER --
 
@@ -59,8 +68,12 @@ export const AdminPage = () => {
                     sessions.
                 </Text>
 
-                <Container styleProps={{ gridColumn: "2", gridRow: "1" }}>
+                <Container styleProps={{ gridColumn: "2", gridRow: "1", marginBottom: spacingDistance(4) }}>
                     <AdminPageRegisteredUsersTable />
+                </Container>
+
+                <Container styleProps={{ gridColumn: "2", gridRow: "2" }}>
+                    <AdminPageSessionsTable />
                 </Container>
             </Row>
         </PageLayout>

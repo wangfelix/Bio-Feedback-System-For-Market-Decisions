@@ -1,6 +1,6 @@
 import { AppDispatch } from "State/store";
-import { apiGetUsers, apiPostDeleteUser } from "Api/requests";
-import { deleteUserByAdmin, setUsers } from "State/Actions/actionCreators";
+import { apiGetSessions, apiGetUsers, apiPostDeleteUser } from "Api/requests";
+import { deleteUserByAdmin, setSessions, setUsers } from "State/Actions/actionCreators";
 import { ApiPostDeleteUserRequestBody } from "Api/Interfaces/Api/Post/ApiPostDeleteUserRequestBody/apiPostDeleteUserRequestBody";
 
 export const initialLoad = () => (dispatch: AppDispatch) => {
@@ -9,10 +9,11 @@ export const initialLoad = () => (dispatch: AppDispatch) => {
 
         dispatch(setUsers(users) as any);
     });
+
+    apiGetSessions().then(({ data }) => dispatch(setSessions(data.sessions)));
 };
 
 export const deleteUser =
     ({ me, email }: ApiPostDeleteUserRequestBody) =>
-    (dispatch: AppDispatch) => {
+    (dispatch: AppDispatch) =>
         apiPostDeleteUser({ me: { email: me.email }, email: email }).then(() => dispatch(deleteUserByAdmin(email)));
-    };

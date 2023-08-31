@@ -1,6 +1,7 @@
 import { ActionType } from "State/Actions/actionTypes";
 import { User } from "State/Reducers/meReducer";
 import { Device, Experiment } from "State/Reducers/sessionPageReducer";
+import { Session } from "State/Reducers/adminPageReducer";
 
 // -- MODALS --
 
@@ -30,6 +31,10 @@ export const setUsers = (users: User[]) => {
 
 export const deleteUserByAdmin = (email: string) => {
     return { type: ActionType.DELETE_USER, payload: email };
+};
+
+export const setSessions = (sessions: Session[]) => {
+    return { type: ActionType.SET_SESSIONS, payload: sessions };
 };
 
 // -- SESSION --

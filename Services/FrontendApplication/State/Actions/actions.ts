@@ -1,6 +1,7 @@
 import { ActionType } from "State/Actions/actionTypes";
 import { User } from "State/Reducers/meReducer";
 import { Device, Experiment } from "State/Reducers/sessionPageReducer";
+import { Session } from "State/Reducers/adminPageReducer";
 
 // -- MODALS --
 
@@ -42,7 +43,12 @@ export interface AdminDeleteUser {
     payload: string;
 }
 
-export type AdminAction = AdminSetUsers | AdminDeleteUser;
+export interface AdminSetSessions {
+    type: ActionType.SET_SESSIONS;
+    payload: Session[];
+}
+
+export type AdminAction = AdminSetUsers | AdminDeleteUser | AdminSetSessions;
 
 // -- SESSION --
 
