@@ -21,8 +21,9 @@
         $ npm i
         ```
         to install the dependencies for the frontend project.
+       > ⚠️ In case of an npm error regarding conflicting peer dependencies, install using the command `npm i --legacy-peer-deps`
 
-    2. In your terminal, navigate to the directory `Bio-Feedback-System-For-Market-Decisions/Services/BackendApplication` and run
+    3. In your terminal, navigate to the directory `Bio-Feedback-System-For-Market-Decisions/Services/BackendApplication` and run
         ```
         $ npm i
         ```
