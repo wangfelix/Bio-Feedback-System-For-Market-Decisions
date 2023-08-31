@@ -12,7 +12,6 @@ import { Button } from "Components/Button/button";
 import { Paths } from "Utils/paths";
 import { SessionPagePaths } from "Pages/SessionPage/SessionPagePaths";
 import { Device, Experiment } from "State/Reducers/sessionPageReducer";
-import { useAppDispatch } from "State/store";
 import {
     setDevices,
     setExperiment as setSessionExperiment,
@@ -20,6 +19,7 @@ import {
 } from "State/Actions/actionCreators";
 import { TextInput } from "Components/textInput";
 import { InputWrapper } from "Components/inputWrapper";
+import { useAppDispatch } from "Utils/hooks";
 
 const SENSORS_MOCK: Device[] = [
     { alias: "EDA Sensor 01", id: "eda_01" },

@@ -1,33 +1,31 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
-import { BORDER_RADIUS, Colors, spacingDistance, Z_INDEX } from "Utils/globalStyles";
 import { Text } from "Components/text";
 import { Container } from "Components/container";
 import { Row } from "Components/row";
-import { RootState } from "State/Reducers";
-import { User } from "State/Reducers/meReducer";
-import { AdminPageRegisteredUsersTableTableRow } from "Pages/AdminPage/Components/adminPageRegisteredUsersTableTableRow";
+import { AdminPageSessionsTableTableRow } from "Pages/AdminPage/Components/AdminPageSessionsTable/Components/adminPageSessionsTableRow";
+import { BORDER_RADIUS, Colors, percent, spacingDistance, Z_INDEX } from "Utils/globalStyles";
+import { ADMIN_PAGE_SESSION_TABLE_TITLES } from "Pages/AdminPage/Components/AdminPageSessionsTable/Utils/adminPageSessionsTableConstants";
+import { useSelector } from "Utils/hooks";
+import { selectSessions } from "Pages/AdminPage/Store/adminPageSelectors";
 
-export const AdminPageRegisteredUsersTable = () => {
+export const AdminPageSessionsTable = () => {
     // -- STATE --
 
-    const registeredUsers = useSelector<RootState, User[]>((state) => state.adminPage.users);
-
-    const tableTitles = ["Name", "Email", "Sessions"];
+    const sessions = useSelector(selectSessions);
 
     // -- RENDER --
 
     return (
         <Container
             styleProps={{
-                height: "100%",
+                height: percent(100),
                 width: 800,
                 borderRadius: BORDER_RADIUS,
             }}
         >
             <Text textType="text" styleProps={{ marginBottom: 10 }}>
-                Registered Users
+                Logged Sessions
             </Text>
 
             <Container
@@ -42,7 +40,7 @@ export const AdminPageRegisteredUsersTable = () => {
 
                 <Row
                     styleProps={{
-                        width: "100%",
+                        width: percent(100),
                         zIndex: Z_INDEX.CARD,
                         boxShadow: "0 5px 5px -5px #777",
                         height: "60px",
@@ -53,15 +51,15 @@ export const AdminPageRegisteredUsersTable = () => {
                     <Row
                         styleProps={{
                             alignSelf: "center",
-                            width: "93%",
+                            width: percent(93),
                             display: "grid",
-                            gridTemplateColumns: "150px 250px 150px 1fr",
+                            gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr",
                             margin: "25px 0",
                             position: "relative",
                             right: "10px",
                         }}
                     >
-                        {tableTitles.map((title) => (
+                        {ADMIN_PAGE_SESSION_TABLE_TITLES.map((title) => (
                             <Text
                                 textType="text"
                                 styleProps={{ fontSize: "15px", color: Colors.PRIMARY_ACCENT_BLUE_HUE }}
@@ -72,10 +70,10 @@ export const AdminPageRegisteredUsersTable = () => {
                     </Row>
                 </Row>
 
-                {registeredUsers?.map((user) => (
+                {sessions?.map((session) => (
                     <Container
                         styleProps={{
-                            width: "100%",
+                            width: percent(100),
                             overflowY: "auto",
                             justifyContent: "center",
                             alignItems: "center",
@@ -83,12 +81,14 @@ export const AdminPageRegisteredUsersTable = () => {
                             marginBottom: spacingDistance(2),
                         }}
                     >
-                        <AdminPageRegisteredUsersTableTableRow
+                        <AdminPageSessionsTableTableRow
                             isSelected={false}
-                            firstName={user.firstName}
-                            lastName={user.lastName}
-                            email={user.email}
-                            _id={user._id}
+                            name={session.name}
+                            duration={session.duration}
+                            userId={session.userId}
+                            _id={session._id}
+                            sensorName={session.sensorName}
+                            experimentAlias={session.experimentAlias}
                         />
                     </Container>
                 ))}

@@ -17,10 +17,10 @@ import {
     selectSessionExperiment,
     selectSessionName,
 } from "Pages/SessionPage/Store/sessionSelectors";
-import { useAppDispatch } from "State/store";
 import { setExperimentFile, setFirstDeviceFile } from "State/Actions/actionCreators";
 import { apiPostTrackSession } from "Api/requests";
 import { selectMeId } from "State/globalSelectors";
+import { useAppDispatch } from "Utils/hooks";
 
 export const SessionFileUploadPage = () => {
     const navigate = useNavigate();

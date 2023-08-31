@@ -1,25 +1,26 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
 import { User as UserIcon } from "phosphor-react";
 
 import { Container } from "Components/container";
-import { AdminPageRegisteredUsersTable } from "Pages/AdminPage/Components/adminPageRegisteredUsersTable";
+import { AdminPageRegisteredUsersTable } from "Pages/AdminPage/Components/AdminPageRegisteredUsersTable/adminPageRegisteredUsersTable";
 import { Text } from "Components/text";
 import { PageLayout } from "Components/pageLayout";
 import { Row } from "Components/row";
-import { RootState } from "State/Reducers";
 import { User } from "State/Reducers/meReducer";
 import { BORDER_RADIUS, Colors, spacingDistance } from "Utils/globalStyles";
 import { initialLoad } from "Pages/AdminPage/Store/adminPageThunks";
-import { useAppDispatch } from "State/store";
-import { AdminPageSessionsTable } from "Pages/AdminPage/Components/adminPageSessionsTable";
+import { AdminPageSessionsTable } from "Pages/AdminPage/Components/AdminPageSessionsTable/adminPageSessionsTable";
+import { useAppDispatch, useSelector } from "Utils/hooks";
+import { selectSessions, selectUsers } from "Pages/AdminPage/Store/adminPageSelectors";
+import { Session } from "State/Reducers/adminPageReducer";
 
 export const AdminPage = () => {
     const dispatch = useAppDispatch();
 
     // -- STATE --
 
-    const registeredUsers = useSelector<RootState, User[]>((state) => state.adminPage.users);
+    const registeredUsers = useSelector<User[]>(selectUsers);
+    const sessions = useSelector<Session[]>(selectSessions);
 
     // -- EFFECTS --
 
@@ -44,7 +45,7 @@ export const AdminPage = () => {
                     <UserIcon color={Colors.GREEN_ACCENT} size={22} weight="bold" />
                 </Container>
             }
-            headingContent={`Total amount of users: ${registeredUsers.length}`}
+            headingContent={`Users: ${registeredUsers.length}. Logged sessions: ${sessions.length}`}
         >
             <Row
                 styleProps={{

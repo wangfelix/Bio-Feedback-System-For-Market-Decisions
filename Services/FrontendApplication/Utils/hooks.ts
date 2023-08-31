@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router";
-import { TypedUseSelectorHook, useSelector as useReduxSelector } from "react-redux";
+import { TypedUseSelectorHook, useDispatch, useSelector as useReduxSelector } from "react-redux";
 
 import { getPageFromPathname, getViewportDimensions } from "Utils/helpers";
 import { RootState } from "State/Reducers";
+import { AppDispatch } from "State/store";
 
 /**
  * Returns the current URL's pathname without any subdirectories or query parameters.
@@ -54,3 +55,5 @@ export const useIsMobile = () => {
 
     return useMemo(() => viewportWidth <= 900, [viewportWidth]);
 };
+
+export const useAppDispatch = () => useDispatch<AppDispatch>();

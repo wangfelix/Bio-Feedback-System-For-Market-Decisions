@@ -4,7 +4,7 @@ import Tooltip from "@mui/material/Tooltip";
 
 import { Row } from "Components/row";
 import { Text } from "Components/text";
-import { BORDER_RADIUS, Colors, Z_INDEX } from "Utils/globalStyles";
+import { BORDER_RADIUS, Colors, percent, Z_INDEX } from "Utils/globalStyles";
 import DownArrow from "Illustrations/downArrow.png";
 import ProfilePicture from "Illustrations/ProfilePicture.png";
 import { Container } from "Components/container";
@@ -12,11 +12,10 @@ import Speechbubble from "Illustrations/exclamationmark.bubble@2x.png";
 import Settings from "Illustrations/gearshape@2x.png";
 import ProfilPictureIcon from "Illustrations/person@2x.png";
 import Logout from "Illustrations/rectangle.portrait.and.arrow.right@2x.png";
-import { useSelector } from "Utils/hooks";
+import { useAppDispatch, useSelector } from "Utils/hooks";
 import { MeState } from "State/Reducers/meReducer";
-import { selectMe } from "Components/Navbar/Store/navbarSelectors";
-import { useAppDispatch } from "State/store";
 import { logOutMe } from "State/Actions/actionCreators";
+import { selectMe } from "State/globalSelectors";
 
 export const NavBarProfileDropdown = () => {
     const dispatch = useAppDispatch();
@@ -98,7 +97,7 @@ export const NavBarProfileDropdown = () => {
                                         width: 250,
                                         gap: 5,
                                         padding: 7,
-                                        zIndex: Z_INDEX.DEMO_PAGE,
+                                        zIndex: Z_INDEX.NAVBAR_DROPDOWN,
                                     }}
                                 >
                                     {options.map((option, index) => (
@@ -138,7 +137,7 @@ export const NavBarProfileDropdown = () => {
                         <div>
                             <Row
                                 styleProps={{
-                                    height: "100%",
+                                    height: percent(100),
                                     cursor: "pointer",
                                     borderRadius: BORDER_RADIUS,
                                     alignItems: "center",

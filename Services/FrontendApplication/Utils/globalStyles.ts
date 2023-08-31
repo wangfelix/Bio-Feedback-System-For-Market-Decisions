@@ -28,17 +28,8 @@ export const spacingDistance = (units: number) => `${units * 8}px`;
 
 export const percent = (percentage: number) => `${percentage}%`;
 
-export enum NavBarTabs {
-    DASHBOARD = "Dashboard",
-    HISTORY = "History",
-    SESSION = "Session",
-    SENSORS_AND_DEVICES = "Sensors and Devices",
-    ADMIN = "Admin Panel",
-}
-
 export enum Z_INDEX {
-    DEMO_PAGE_MODAL = 2200,
-    DEMO_PAGE = 2100,
+    NAVBAR_DROPDOWN = 2100,
     NAVBAR = 2000,
     MODAL = 1000,
     BUTTON = 500,

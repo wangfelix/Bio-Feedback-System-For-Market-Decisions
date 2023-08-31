@@ -7,8 +7,8 @@ import { BORDER_RADIUS, Colors } from "Utils/globalStyles";
 import { Container } from "Components/container";
 import { User } from "State/Reducers/meReducer";
 import { selectMeEmail } from "State/globalSelectors";
-import { useAppDispatch } from "State/store";
 import { deleteUser } from "Pages/AdminPage/Store/adminPageThunks";
+import { useAppDispatch } from "Utils/hooks";
 
 export interface AdminPageRegisteredUsersTableTableRowProps extends Omit<User, "isAdmin"> {
     isSelected: boolean;

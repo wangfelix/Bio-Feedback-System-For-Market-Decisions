@@ -1,5 +1,4 @@
-import { createStore, applyMiddleware } from "redux";
-import { useDispatch } from "react-redux";
+import { applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk";
 
 import { rootReducer } from "State/Reducers";
@@ -10,6 +9,3 @@ store.subscribe(() => {
 });
 
 export type AppDispatch = typeof store.dispatch;
-
-// TODO: Move to hooks.ts
-export const useAppDispatch = () => useDispatch<AppDispatch>();

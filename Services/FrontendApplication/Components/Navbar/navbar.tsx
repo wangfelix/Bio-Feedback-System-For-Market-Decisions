@@ -1,20 +1,21 @@
 import React, { useCallback, useMemo } from "react";
-import { batch, useDispatch } from "react-redux";
+import { batch } from "react-redux";
 
-import { NAVBAR_HEIGHT, Colors, NavBarTabs, Z_INDEX, MAX_PAGE_WIDTH, spacingDistance } from "Utils/globalStyles";
+import { NAVBAR_HEIGHT, Colors, Z_INDEX, MAX_PAGE_WIDTH, spacingDistance, percent } from "Utils/globalStyles";
 import { Paths } from "Utils/paths";
 import { NavBarItem, NavBarItemProps } from "Components/Navbar/Components/navBarItem";
 import { Button } from "Components/Button/button";
 import { Row } from "Components/row";
 import { Container } from "Components/container";
 import { Logo } from "Illustrations/Logo";
-import { useIsAdmin, useIsLoggedIn, usePage } from "Utils/hooks";
+import { useAppDispatch, useIsAdmin, useIsLoggedIn, usePage } from "Utils/hooks";
 import { setRegistrationModalOpen, setRegistrationModalState } from "State/Actions/actionCreators";
 import { NavBarProfileDropdown } from "Components/Navbar/Components/navBarProfileDropdown";
 import { SessionPagePaths } from "Pages/SessionPage/SessionPagePaths";
+import { NavBarTabs } from "Components/Navbar/Utils/navbarTypes";
 
 export const NavBar = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     // -- STATE --
 
@@ -67,7 +68,7 @@ export const NavBar = () => {
 
     const navBarStyle = {
         height: NAVBAR_HEIGHT,
-        width: "100%",
+        width: percent(100),
         position: "fixed" as "fixed",
         background: Colors.BLUE_DARKEST,
         boxShadow: "0 5px 20px 2px rgba(20, 0, 20, 0.3)",
@@ -87,7 +88,7 @@ export const NavBar = () => {
                 <Container
                     style={{
                         width: 120,
-                        height: "80%",
+                        height: percent(80),
                         display: "flex",
                     }}
                 >

@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 
 import { Container } from "Components/container";
 import { Row } from "Components/row";
-import { MAX_PAGE_WIDTH, spacingDistance } from "Utils/globalStyles";
+import { MAX_PAGE_WIDTH, percent, spacingDistance } from "Utils/globalStyles";
 
 type PageLayoutProps = {
     icon?: any;
@@ -43,7 +43,7 @@ export const PageLayout = ({
                 <Row styleProps={{ position: "absolute", inset: 0 }}>
                     <Container
                         styleProps={{
-                            width: "100%",
+                            width: percent(100),
                             maxWidth: MAX_PAGE_WIDTH,
                             margin: "0 auto",
                         }}
@@ -67,7 +67,7 @@ export const PageLayout = ({
                             </Row>
                         )}
 
-                        <Container styleProps={{ height: "100%" }}>{children}</Container>
+                        <Container styleProps={{ height: percent(100) }}>{children}</Container>
                     </Container>
                 </Row>
             );
@@ -81,16 +81,16 @@ export const PageLayout = ({
                 <Row styleProps={{ position: "absolute", inset: 0 }}>
                     <Row
                         styleProps={{
-                            width: "100%",
+                            width: percent(100),
                             maxWidth: MAX_PAGE_WIDTH,
                             margin: "0 auto",
-                            height: "100%",
+                            height: percent(100),
                         }}
                     >
                         <Container
                             styleProps={{
-                                width: "50%",
-                                height: "100%",
+                                width: percent(50),
+                                height: percent(100),
                                 position: "relative",
                             }}
                         >
@@ -116,8 +116,8 @@ export const PageLayout = ({
 
                             <Container
                                 styleProps={{
-                                    width: "100%",
-                                    height: "100%",
+                                    width: percent(100),
+                                    height: percent(100),
                                     position: "relative",
                                 }}
                             >
@@ -126,8 +126,8 @@ export const PageLayout = ({
                         </Container>
                         <Container
                             styleProps={{
-                                width: "50%",
-                                height: "100%",
+                                width: percent(50),
+                                height: percent(100),
                                 position: "relative",
                             }}
                         >
