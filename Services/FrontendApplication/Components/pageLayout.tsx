@@ -55,6 +55,7 @@ export const PageLayout = ({
                                     justifyContent: "space-between",
                                     alignItems: "center",
                                     height: "200px",
+                                    flexShrink: 0,
                                 }}
                             >
                                 <Row styleProps={{ alignItems: "center", gap: spacingDistance(1.5) }}>

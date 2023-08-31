@@ -10,12 +10,12 @@ import { User } from "State/Reducers/meReducer";
 import { BORDER_RADIUS, Colors, spacingDistance } from "Utils/globalStyles";
 import { initialLoad } from "Pages/AdminPage/Store/adminPageThunks";
 import { AdminPageSessionsTable } from "Pages/AdminPage/Components/AdminPageSessionsTable/adminPageSessionsTable";
-import { useAppDispatch, useSelector } from "Utils/hooks";
+import { useTypedDispatch, useSelector } from "Utils/hooks";
 import { selectSessions, selectUsers } from "Pages/AdminPage/Store/adminPageSelectors";
 import { Session } from "State/Reducers/adminPageReducer";
 
 export const AdminPage = () => {
-    const dispatch = useAppDispatch();
+    const dispatch = useTypedDispatch();
 
     // -- STATE --
 

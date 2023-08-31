@@ -13,11 +13,11 @@ import { Paths } from "Utils/paths";
 import { SessionPagePaths } from "Pages/SessionPage/SessionPagePaths";
 import Animation from "Illustrations/Lotties/animation_lkaabqti.json";
 import { setSessionDuration } from "State/Actions/actionCreators";
-import { useAppDispatch } from "Utils/hooks";
+import { useTypedDispatch } from "Utils/hooks";
 
 export const SessionRunningPage = () => {
     const navigate = useNavigate();
-    const dispatch = useAppDispatch();
+    const dispatch = useTypedDispatch();
 
     // -- STATE --
 

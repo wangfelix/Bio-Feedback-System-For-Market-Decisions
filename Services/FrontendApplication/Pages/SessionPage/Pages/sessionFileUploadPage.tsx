@@ -20,12 +20,12 @@ import {
 import { setExperimentFile, setFirstDeviceFile } from "State/Actions/actionCreators";
 import { apiPostTrackSession } from "Api/requests";
 import { selectMeId } from "State/globalSelectors";
-import { useAppDispatch } from "Utils/hooks";
+import { useTypedDispatch } from "Utils/hooks";
 
 export const SessionFileUploadPage = () => {
     const navigate = useNavigate();
 
-    const dispatch = useAppDispatch();
+    const dispatch = useTypedDispatch();
 
     // -- STATE --
 

@@ -56,4 +56,4 @@ export const useIsMobile = () => {
     return useMemo(() => viewportWidth <= 900, [viewportWidth]);
 };
 
-export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useTypedDispatch = () => useDispatch<AppDispatch>();

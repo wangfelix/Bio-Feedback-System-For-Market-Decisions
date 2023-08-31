@@ -1,11 +1,12 @@
 import { sendGetRequest, sendPostRequest } from "Utils/api";
-import { ApiPostTrackSessionRequestBody } from "Api/Interfaces/Api/Post/ApiPostTrackSessionRequestBody/apiPostTrackSessionRequestBody";
-import { ApiPostLogInRequestBody } from "Api/Interfaces/Api/Post/ApiPostLogInRequestBody/apiPostLogInRequestBody";
-import { ApiPostRegisterUserRequestBody } from "Api/Interfaces/Api/Post/ApiPostRegisterUserRequestBody/apiPostRegisterUserRequestBody";
-import { ApiPostDeleteUserRequestBody } from "Api/Interfaces/Api/Post/ApiPostDeleteUserRequestBody/apiPostDeleteUserRequestBody";
-import { ApiGetSessionsResponseBodyType } from "Api/Interfaces/Api/Get/ApiGetSessions/apiGetSessionsResponseBodyType";
+import { ApiPostTrackSessionRequestBody } from "Api/Interfaces/Api/Post/ApiPostTrackSession/apiPostTrackSessionRequestBody";
+import { ApiPostLogInRequestBody } from "Api/Interfaces/Api/Post/ApiPostLogIn/apiPostLogInRequestBody";
+import { ApiPostRegisterUserRequestBody } from "Api/Interfaces/Api/Post/ApiPostRegisterUser/apiPostRegisterUserRequestBody";
+import { ApiPostDeleteUserRequestBody } from "Api/Interfaces/Api/Post/ApiPostDeleteUser/apiPostDeleteUserRequestBody";
+import { ApiGetSessionsResponseBodyType } from "Api/Interfaces/Api/Get/ApiGetSessions/apiGetSessionsResponseBody";
+import { ApiGetUsersResponseBody } from "Api/Interfaces/Api/Get/ApiGetUsers/apiGetUsersResponseBody";
 
-export const apiGetUsers = () => sendGetRequest("get-users").then((response) => response);
+export const apiGetUsers = () => sendGetRequest<ApiGetUsersResponseBody>("get-users").then((response) => response);
 
 export const apiPostLoginUser = (data: ApiPostLogInRequestBody) =>
     sendPostRequest("/log-in", { ...data }).then((response) => response);

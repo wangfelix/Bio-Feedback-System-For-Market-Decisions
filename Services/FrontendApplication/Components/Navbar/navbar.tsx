@@ -8,14 +8,14 @@ import { Button } from "Components/Button/button";
 import { Row } from "Components/row";
 import { Container } from "Components/container";
 import { Logo } from "Illustrations/Logo";
-import { useAppDispatch, useIsAdmin, useIsLoggedIn, usePage } from "Utils/hooks";
+import { useTypedDispatch, useIsAdmin, useIsLoggedIn, usePage } from "Utils/hooks";
 import { setRegistrationModalOpen, setRegistrationModalState } from "State/Actions/actionCreators";
 import { NavBarProfileDropdown } from "Components/Navbar/Components/navBarProfileDropdown";
 import { SessionPagePaths } from "Pages/SessionPage/SessionPagePaths";
 import { NavBarTabs } from "Components/Navbar/Utils/navbarTypes";
 
 export const NavBar = () => {
-    const dispatch = useAppDispatch();
+    const dispatch = useTypedDispatch();
 
     // -- STATE --
 

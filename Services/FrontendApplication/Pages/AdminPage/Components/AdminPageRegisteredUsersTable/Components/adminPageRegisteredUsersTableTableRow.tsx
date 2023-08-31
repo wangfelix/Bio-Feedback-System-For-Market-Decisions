@@ -8,7 +8,7 @@ import { Container } from "Components/container";
 import { User } from "State/Reducers/meReducer";
 import { selectMeEmail } from "State/globalSelectors";
 import { deleteUser } from "Pages/AdminPage/Store/adminPageThunks";
-import { useAppDispatch } from "Utils/hooks";
+import { useTypedDispatch } from "Utils/hooks";
 
 export interface AdminPageRegisteredUsersTableTableRowProps extends Omit<User, "isAdmin"> {
     isSelected: boolean;
@@ -20,7 +20,7 @@ export const AdminPageRegisteredUsersTableTableRow = ({
     email,
     isSelected,
 }: AdminPageRegisteredUsersTableTableRowProps) => {
-    const dispatch = useAppDispatch();
+    const dispatch = useTypedDispatch();
     // -- STATE --
 
     const meEmail = useSelector(selectMeEmail);

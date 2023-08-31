@@ -12,13 +12,13 @@ import Speechbubble from "Illustrations/exclamationmark.bubble@2x.png";
 import Settings from "Illustrations/gearshape@2x.png";
 import ProfilPictureIcon from "Illustrations/person@2x.png";
 import Logout from "Illustrations/rectangle.portrait.and.arrow.right@2x.png";
-import { useAppDispatch, useSelector } from "Utils/hooks";
+import { useTypedDispatch, useSelector } from "Utils/hooks";
 import { MeState } from "State/Reducers/meReducer";
 import { logOutMe } from "State/Actions/actionCreators";
 import { selectMe } from "State/globalSelectors";
 
 export const NavBarProfileDropdown = () => {
-    const dispatch = useAppDispatch();
+    const dispatch = useTypedDispatch();
 
     // -- STATE --
 

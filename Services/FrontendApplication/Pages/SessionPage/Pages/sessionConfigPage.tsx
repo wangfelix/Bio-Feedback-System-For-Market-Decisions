@@ -19,7 +19,7 @@ import {
 } from "State/Actions/actionCreators";
 import { TextInput } from "Components/textInput";
 import { InputWrapper } from "Components/inputWrapper";
-import { useAppDispatch } from "Utils/hooks";
+import { useTypedDispatch } from "Utils/hooks";
 
 const SENSORS_MOCK: Device[] = [
     { alias: "EDA Sensor 01", id: "eda_01" },
@@ -32,7 +32,7 @@ const EXPERIMENTS_MOCK: Experiment[] = [
 ];
 
 export const SessionConfigPage = () => {
-    const dispatch = useAppDispatch();
+    const dispatch = useTypedDispatch();
 
     // -- STATE --
 

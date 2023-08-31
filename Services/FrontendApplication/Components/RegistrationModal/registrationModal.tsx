@@ -14,14 +14,14 @@ import { HandleInputChange, RegistrationFormState } from "Components/Registratio
 import { REGISTRATION_FORM_INITIAL_STATE } from "Components/RegistrationModal/Utils/registrationFormConstants";
 import { RootState } from "State/Reducers";
 import { logInUser, registerUser } from "Components/RegistrationModal/Store/registrationModalThunks";
-import { useAppDispatch } from "Utils/hooks";
+import { useTypedDispatch } from "Utils/hooks";
 
 type RegistrationModalProps = {
     isOpen: boolean;
 };
 
 export const RegistrationModal = ({ isOpen }: RegistrationModalProps) => {
-    const dispatch = useAppDispatch();
+    const dispatch = useTypedDispatch();
 
     // -- STATE --
 
