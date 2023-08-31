@@ -26,8 +26,6 @@ app.get("/", (_req, _res): void => {
     });
 });
 
-let fake_db: any = [];
-
 // Register User
 app.post("/register-user", async (_req, _res) => {
     const user: User = _req.body as User;
@@ -44,12 +42,6 @@ app.post("/register-user", async (_req, _res) => {
         };
 
         const usera = await UserSchema.create(userWithHashedPassword);
-
-        console.log(usera);
-
-        fake_db.push(userWithHashedPassword);
-
-        console.log(fake_db);
 
         _res.json({ usera });
     } catch (e) {
